@@ -1,0 +1,19 @@
+@mixin flex($justify: flex-start, $align: stretch, $gap: 0, $direction: row, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin flex-between-center($gap: 0) {
+  @include flex(space-between, center, $gap);
+}
+
+@mixin flex-center($gap: 0) {
+  @include flex(center, center, $gap);
+}

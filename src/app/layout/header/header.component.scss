@@ -1,0 +1,115 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+a {
+  cursor: pointer;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: $color-bg-primary;
+}
+
+.header__inner {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 35px 100px;
+  @include flex-between-center;
+}
+
+.header__right {
+  @include flex(center, center, 92px); // Abstand zwischen Nav & Language
+}
+
+.logo {
+  text-decoration: none;
+  color: $color-text-primary;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.logo__accent {
+  color: $color-accent-purple;
+}
+
+.nav {
+  @include flex(center, center, 32px);
+}
+
+.nav__link {
+  position: relative;
+  text-decoration: none;
+  color: $color-text-primary;
+  font-size: 23px;
+  line-height: 1;
+  padding: 6px 0;
+  transition: color $transition-fast;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 3px;
+    width: 50%;
+    background: $color-accent-purple;
+    border-radius: 999px;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    color: $color-accent-green;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.nav__link.is-active {
+  color: $color-accent-green;
+}
+
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+.lang {
+  @include flex(center, center, 10px);
+}
+
+.lang__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid $color-text-primary;
+  background: transparent;
+  color: $color-text-primary;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background $transition-fast,
+              border-color $transition-fast,
+              color $transition-fast,
+              transform $transition-fast;
+
+  // Hover NUR wenn nicht aktiv
+  &:not(.is-active):hover {
+    background: $color-accent-purple;
+    border-color: $color-accent-purple;
+    color: $color-text-primary;
+    transform: translateY(-1px);
+  }
+}
+
+.lang__btn.is-active {
+  background: $color-accent-green;
+  border-color: $color-accent-green;
+  color: $color-bg-primary;
+}

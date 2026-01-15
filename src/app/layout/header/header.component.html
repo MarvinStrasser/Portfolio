@@ -1,1 +1,26 @@
-<p>header works!</p>
+<header class="header">
+  <div class="header__inner">
+    <a class="logo" routerLink="/">
+      <span>M</span><span style="color: #9747FF;">a</span><span>r</span><span>vi</span><span
+        style="color: #70E61C;">n</span>
+    </a>
+
+    <div class="header__right">
+      <nav class="nav">
+        <a class="nav__link" data-section="about" href="#about">About me</a>
+        <a class="nav__link" data-section="skills" href="#skills">Skills</a>
+        <a class="nav__link" data-section="portfolio" href="#portfolio">Portfolio</a>
+      </nav>
+
+      <div class="lang">
+        <button class="lang__btn" [class.is-active]="activeLang === 'de'" (click)="setLang('de')" type="button">
+          DE
+        </button>
+
+        <button class="lang__btn" [class.is-active]="activeLang === 'en'" (click)="setLang('en')" type="button">
+          EN
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
