@@ -1,0 +1,216 @@
+.join-container {
+    display: flex;
+    color: white;
+    align-items: center;
+    margin-top: 116px;
+    justify-content: flex-start;
+    margin-left: 50px;
+
+    .join-screens {
+        width: 620px;
+        height: 339px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+        z-index: 4;
+
+
+        img {
+            width: 370px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+    }
+
+    .join-description {
+        display: flex;
+        height: 339.19px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 35px;
+        margin-right: 100px;
+        z-index: 5;
+
+
+        .join-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+
+
+            h3 {
+                margin: 0;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 700;
+                color: #9747FF;
+            }
+
+            p {
+                font-size: 23px;
+                font-style: normal;
+                font-weight: 400;
+                color: #70E61C;
+            }
+
+            span {
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+
+
+        .live-test-btn {
+            margin-right: 135px;
+            width: 165px;
+            height: 60px;
+            background: #9747FF;
+            border-radius: 15px;
+            color: white;
+            font-size: 23px;
+            font-weight: 400;
+            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: 0.1s ease;
+
+            &:hover {
+                background-color: #70E61C;
+            }
+        }
+
+        .github-btn {
+            background-color: #141D2F;
+            border-style: unset;
+            border: 1px solid #70E61C;
+            width: 165px;
+            height: 60px;
+            border-radius: 15px;
+            color: white;
+            font-size: 23px;
+            font-weight: 400;
+            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: 0.1s ease;
+
+            &:hover {
+                background-color: #70E61C;
+            }
+        }
+    }
+
+
+
+}
+
+@media(max-width: 1090px) {
+    .join-container {
+        flex-direction: column !important;
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .join-screens {
+        padding: 0px !important;
+    }
+
+    .join-description {
+        margin-right: unset !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0px 100px !important;
+    }
+
+    .join-text {
+        align-items: center !important;
+
+        h3 {
+            font-size: 44px !important;
+        }
+
+        p {
+            font-size: 18px !important;
+        }
+
+        span {
+            text-align: center !important;
+        }
+    }
+}
+
+@media(max-width: 700px) {
+    .join-description {
+        width: 90% !important;
+        padding: 0px 0px !important;
+    }
+
+    .live-test-btn {
+        margin-right: 50px !important;
+    }
+}
+
+@media (max-width: 580px) {
+    .live-test-btn {
+        margin-right: 10px !important;
+    }
+}
+
+@media (max-width: 490px) {
+    .live-test-btn {
+        width: 140px !important;
+        height: 55px !important;
+        font-size: 20px !important;
+    }
+
+    .github-btn {
+        width: 140px !important;
+        height: 55px !important;
+        font-size: 20px !important;
+    }
+
+    .join-description {
+        width: 90% !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .join-screens {
+        width: 100vw !important;
+        img {
+            width: 90vw !important;
+            height: 165px !important;
+        }
+    }
+
+    .join-description {
+        width: 90vw !important;
+    }
+
+    .live-test-btn {
+        width: 125px !important;
+        height: 50px !important;
+    }
+
+    .github-btn {
+        width: 125px !important;
+        height: 50px !important;
+    }
+}
+
+@media ( max-width: 300px) {
+    .live-test-btn {
+        width: 115px !important;
+        height: 50px !important;
+    }
+
+    .github-btn {
+        width: 115px !important;
+        height: 50px !important;
+    }
+}

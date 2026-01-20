@@ -1,0 +1,371 @@
+.contact-box {
+    height: max-content;
+    position: relative;
+    z-index: 3;
+    max-width: 1440px;
+    padding-bottom: 100px;
+}
+
+.purple-shadow4 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    top: 5280px;
+
+    img {
+        width: auto;
+        height: 200px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+}
+
+.contact-container {
+    color: white;
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+
+    h1 {
+        font-size: 90px;
+        font-weight: 700;
+    }
+
+
+    .purple-line {
+        height: 5px;
+        width: 50px;
+        background-color: #4B47FF;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        margin-right: 50px;
+    }
+}
+
+.contact-me-container {
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+
+    .contact-me {
+        width: 50%;
+
+        h2 {
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        p,
+        span {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+    }
+
+
+    .contact-form {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+        width: 50%;
+
+        .wrapper {
+            width: 100%;
+        }
+
+        input {
+            height: 50px;
+            padding: 15px 25px;
+            background-color: #141D2F;
+            border: 1px solid #4B47FF;
+            border-radius: 10px;
+            color: white;
+        }
+
+        textarea {
+            height: 202px;
+            padding: 15px 25px;
+            background-color: #141D2F;
+            border: 1px solid #4B47FF;
+            border-radius: 10px;
+            color: white;
+        }
+
+        input.content-filled,
+        textarea.content-filled {
+            border-color: #54AC15;
+        }
+
+        input.empty-content,
+        textarea.empty-content {
+            border-color: #E61C40;
+        }
+
+        .bg-warning {
+            background: url('/assets/img/alert.png') no-repeat scroll 15px 15px;
+            background-position: calc(100% - 15px) 15px;
+        }
+
+        .transparent {
+            color: transparent;
+        }
+
+        .send-container {
+            height: 75px;
+        }
+
+        .send-btn {
+            width: 180px;
+            height: 60px;
+            padding: 10px 10px;
+            font-size: 18px;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: #70E61C;
+            border-radius: 10px;
+            cursor: pointer;
+
+            &:hover {
+                width: 190px;
+                height: 70px;
+                background-color: #4B47FF;
+            }
+        }
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+
+    span {
+        color: #E61C40;
+        font-size: 18px;
+    }
+
+    img {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+}
+
+
+.message-sent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .message-sent {
+        font-size: 20px;
+        color: white;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 0;
+        animation: fadeInAnimation 1s steps(20, end) forwards;
+    }
+}
+
+.scroll-up-button {
+    background-color: #141D2F;
+    position: relative;
+    bottom: 75px;
+    right: 100px;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: opacity 0.01s;
+        position: absolute;
+    }
+
+}
+
+.none-hovered {
+    opacity: 1;
+
+    &:hover {
+        opacity: 0;
+    }
+}
+
+.hovered {
+    opacity: 0;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInAnimation {
+    from {
+        width: 100%;
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        width: 100%;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.d-none {
+    display: none;
+}
+
+
+@media(max-width: 1250px) {
+    .purple-shadow4 { 
+        display: none;
+    }
+}
+
+@media(max-width: 1090px) {
+    .contact-box {
+        height: max-content;
+        padding-bottom: 100px;
+        padding-top: 120px;
+    }
+
+    .contact-container {
+        flex-direction: column-reverse;
+        padding-top: 0px;
+        padding-bottom: 25px;
+        padding-left: 0px;
+        padding-right: 0px;
+
+        h1 {
+            margin: 0;
+        }
+
+        .purple-line {
+            box-sizing: border-box;
+            margin-right: 0;
+            width: 40%;
+        }
+    }
+
+    .contact-me-container {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 0;
+
+        .contact-me {
+            width: 100%;
+            padding-bottom: 50px;
+            text-align: center;
+        }
+
+        .contact-form {
+            gap: 0px;
+            width: 100% ;
+
+            input {
+                width: unset;
+            }
+
+            textarea {
+                width: unset;
+            }
+
+            .wrapper {
+                gap: 0px;
+                box-sizing: border-box;
+                width: 100%t;
+            }
+        }
+    }
+
+    .purple-shadow4 {
+        display: none;
+    }
+
+
+    .scroll-up-button {
+        bottom: 70px;
+    }
+}
+
+@media (max-width: 580px) {
+    .contact-container h1 {
+        font-size: 65px;
+    }
+
+    .message-sent-container {
+        .message-sent {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .contact-me-container {
+        padding: unset;
+        width: 100vw;
+
+        .contact-me {
+            width: 90%;
+        }
+
+        .contact-form {
+            width: 90%;
+        }
+    }
+
+    .scroll-up-button {
+        bottom: 70px;
+        right: 5%;
+    }
+
+    .message-sent-container {
+        .message-sent {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: 490px) {
+    .scroll-up-button {
+
+        img {
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    .send-btn {
+        width: 150px;
+        height: 60px;
+    }
+
+    .message-sent-container {
+        .message-sent {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .message-sent-container {
+        .message-sent {
+            font-size: 9px;
+        }
+    }
+}

@@ -3,104 +3,16 @@
 
 .hero {
   background-color: #141D2F;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-
-  .hero__inner {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1440px;
-    padding: 0 100px;
-    display: flex;
-    align-items: center;
-  }
-
-  .left__content,
-  .right__content {
-    display: flex;
-    align-items: center;
-  }
-
-  .left__content {
-    flex: 0 0 520px;
-    justify-content: center;
-  }
-
-  .right__content {
-    flex: 1;
-    justify-content: flex-start;
-  }
-
-  // --- IMAGE BLOCK ---
-  .hero__image {
-    position: relative;
-    width: 520px;
-    height: 705px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .hero__profile {
-    width: 100%;
-    max-width: 646px;
-    max-height: 705px;
-    height: auto;
-    position: relative;
-    z-index: 2;
-    object-fit: cover;
-    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.35));
-  }
-
-  .hero__shadow {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    user-select: none;
-    object-fit: contain;
-  }
-
-  .hero__shadow--purple {
-    width: 340px;
-    left: -40px;
-    top: 120px;
-    transform: rotate(200deg);
-    opacity: 0.95;
-  }
-
-  .hero__shadow--green {
-    width: 520px;
-    left: 120px;
-    top: 140px;
-    transform: rotate(25deg);
-    opacity: 0.95;
-  }
-
-  // --- CONTENT BLOCK ---
-  .hero__content {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .hero__intro {
-    display: flex;.hero {
-  background-color: #141D2F;
   min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 80px 0 60px;
 
   .hero__inner {
     width: 100%;
     max-width: 1440px;
+    margin: 0 auto;
     padding: 0 100px;
 
     display: flex;
@@ -189,6 +101,7 @@
     transform: rotate(-90deg);
     transform-origin: center;
     opacity: 0.9;
+    z-index: 3;
   }
 
   .hero__title {
@@ -202,6 +115,7 @@
       line-height: 1.05;
       font-weight: 700;
       letter-spacing: 0.5px;
+      z-index: 3;
     }
 
     h2 {
@@ -212,6 +126,7 @@
       color: #9747FF;
       letter-spacing: 1px;
       text-transform: uppercase;
+      z-index: 3;
     }
   }
 
@@ -229,6 +144,7 @@
     font-size: 20px;
     font-weight: 400;
     border: none;
+    z-index: 3;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
@@ -240,10 +156,10 @@
     }
   }
 
-  // --- RESPONSIVE (optional aber empfehlenswert) ---
   @media (max-width: 1100px) {
     .hero__inner {
       gap: 50px;
+      padding: 0 40px;
     }
 
     .left__content {
@@ -265,116 +181,8 @@
   }
 
   @media (max-width: 900px) {
-    .hero__inner {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 40px;
-    }
+    padding: 120px 0 60px;
 
-    .right__content {
-      justify-content: center;
-    }
-
-    .hero__content {
-      align-items: center;
-    }
-
-    .hero__intro {
-      justify-content: center;
-    }
-
-    .hero__iam {
-      font-size: 56px;
-    }
-  }
-}
-    align-items: center;
-  }
-
-  .hero__iam {
-    font-size: 64px;
-    line-height: 1;
-    transform: rotate(-90deg);
-    transform-origin: center;
-    opacity: 0.9;
-  }
-
-  .hero__title {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    h1 {
-      margin: 0;
-      font-size: 90px;
-      line-height: 1.05;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 58px;
-      line-height: 1.1;
-      font-weight: 400;
-      color: #9747FF;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-  }
-
-  .hero__actions {
-    // kein height: 1px, das ist unnötig und macht gern komische Effekte
-    display: flex;
-    align-items: center;
-  }
-
-  .btn.btn--primary {
-    width: 180px;
-    height: 60px;
-    background: $color-accent-green;
-    border-radius: 15px;
-    color: white;
-    font-size: 20px;
-    font-weight: 400;
-    border: none;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-    transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
-
-    &:hover {
-      background-color: $color-accent-purple;
-      transform: translateY(-2px) scale(1.04);
-      box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.35);
-    }
-  }
-
-  // --- RESPONSIVE (optional aber empfehlenswert) ---
-  @media (max-width: 1100px) {
-    .hero__inner {
-      gap: 50px;
-    }
-
-    .left__content {
-      flex: 0 0 440px;
-    }
-
-    .hero__image {
-      width: 440px;
-      height: 580px;
-    }
-
-    .hero__title h1 {
-      font-size: 68px;
-    }
-
-    .hero__title h2 {
-      font-size: 36px;
-    }
-  }
-
-  @media (max-width: 900px) {
     .hero__inner {
       flex-direction: column;
       align-items: center;

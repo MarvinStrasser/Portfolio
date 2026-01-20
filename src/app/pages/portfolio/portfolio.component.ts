@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { JoinComponent } from '../../projects/join/join.component';
+import { PolloLocoComponent } from '../../projects/pollo-loco/pollo-loco.component';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [],
+  imports: [JoinComponent, PolloLocoComponent],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss'
 })
-export class PortfolioComponent {
-
-}
+export class PortfolioComponent {}

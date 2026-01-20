@@ -1,21 +1,49 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
+#about-me {
+  position: relative;
+  width: 100%;
+  background-color: #141D2F;
+  padding: 120px 0;
+  overflow: visible;
+}
+
+#about-me::before {
+  content: '';
+  position: absolute;
+  top: -540px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 220px);
+  background-image: url('./../../../assets/img/bg-top-shape.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-me-container {
+  position: relative;
+  z-index: 1;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
 .about-me-container {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  background-image: url('./../../../assets/img/bg-top-shape.png');
-  background-size: cover;
+
+  box-sizing: border-box; // <— wichtig
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 80px;
-
-  padding: 160px 40px 120px; // statt padding-top 250 + padding-left 102
   color: white;
   position: relative;
-  box-sizing: border-box;
 }
 
 .about-me-left-content {
@@ -63,7 +91,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 24px;
   box-sizing: border-box;
   z-index: 5;
 }
