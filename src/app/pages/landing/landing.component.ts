@@ -3,13 +3,20 @@ import { AboutComponent } from '../about/about.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { PortfolioComponent } from '../portfolio/portfolio.component';
 import { ContactComponent } from '../contact/contact.component';
+import { SocialLinksComponent } from '../../social-links/social-links.component';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [AboutComponent, SkillsComponent, PortfolioComponent, ContactComponent],
+  imports: [
+    AboutComponent,
+    SkillsComponent,
+    PortfolioComponent,
+    ContactComponent,
+    SocialLinksComponent,
+  ],
   templateUrl: './landing.component.html',
-  styleUrl: './landing.component.scss'
+  styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent {
   scrollToContact(): void {

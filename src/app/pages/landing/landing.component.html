@@ -20,12 +20,22 @@
         </div>
 
         <div class="hero-actions">
-          <button type="button" class="btn btn-primary"><a href="#contact" class="btn btn-primary">Let's talk</a></button>
+          <button type="button" class="btn btn-primary" (click)="scrollToContact()">
+            Let's talk
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="hero-about-bridge">
+  <img class="hero-about-shape" src="assets/img/bg-top-shape.png" alt="">
+  <div class="hero-about-socials">
+    <span class="social-line"></span>
+    <app-social-links></app-social-links>
+  </div>
+</div>
 
 <section id="about">
   <app-about></app-about>

@@ -6,6 +6,7 @@ import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { SocialLinksComponent } from './social-links/social-links.component';
 
 import { JoinComponent } from './projects/join/join.component';
 import { PolloLocoComponent } from './projects/pollo-loco/pollo-loco.component';

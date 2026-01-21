@@ -12,31 +12,11 @@ a {
   position: relative;
   width: 100%;
   background-color: #141D2F;
-  padding: 120px 0;
   overflow: visible;
+  z-index: 10;
+  top: -380px;
 }
 
-#about-me::before {
-  content: '';
-  position: absolute;
-  top: -605px;
-  left: 0;
-  width: 100%;
-  height: calc(100% + 220px);
-  background-image: url('./../../../assets/img/bg-top-shape.png');
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: contain;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.social-media-links {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 124px;
-  gap: 32px;
-}
 
 .about-me-container {
   position: relative;
@@ -168,9 +148,6 @@ a {
     padding: 120px 40px;
   }
 
-  .social-media-links {
-    display: none;
-  }
 
   .about-me-left-content {
     width: 100%;
