@@ -36,7 +36,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     this.observer?.disconnect();
 
     const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
-    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav__link'));
+    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-link'));
 
     if (!sections.length || !navLinks.length) return;
 
@@ -52,7 +52,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
           });
         }
       },
-      { threshold: 0.6 }
+      { threshold: 0.25 }
     );
 
     sections.forEach((s) => this.observer!.observe(s));
@@ -62,5 +62,29 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   setLang(lang: 'de' | 'en'): void {
     this.activeLang = lang;
+  }
+
+  menuOpen = false;
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+    document.body.classList.toggle('no-scroll', this.menuOpen);
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+    document.body.classList.remove('no-scroll');
+  }
+
+  onNavClick(sectionId: string): void {
+    this.setActiveLink(sectionId);
+    this.closeMenu();
+  }
+
+  private setActiveLink(sectionId: string): void {
+    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-link'));
+    navLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.dataset['section'] === sectionId);
+    });
   }
 }

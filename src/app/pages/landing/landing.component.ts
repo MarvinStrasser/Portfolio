@@ -11,4 +11,10 @@ import { ContactComponent } from '../contact/contact.component';
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
 })
-export class LandingComponent {}
+export class LandingComponent {
+  scrollToContact(): void {
+    const el = document.getElementById('contact');
+    el?.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+

@@ -1,25 +1,28 @@
 <header class="header">
-  <div class="header__inner">
-    <a class="logo" routerLink="/">
-      <span>M</span><span style="color: #9747FF;">a</span><span>r</span><span>vi</span><span
-        style="color: #70E61C;">n</span>
+  <div class="header-inner">
+    <a class="logo" href="#" routerLink="/">
+      <span>M</span><span style="color: #9747FF;">A</span><span>R</span><span>VI</span><span
+        style="color: #70E61C;">N</span>
     </a>
 
-    <div class="header__right">
+    <button class="burger" (click)="toggleMenu()" [class.is-open]="menuOpen" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="header-right" [class.is-open]="menuOpen">
       <nav class="nav">
-        <a class="nav__link" data-section="about" href="#about">About me</a>
-        <a class="nav__link" data-section="skills" href="#skills">Skills</a>
-        <a class="nav__link" data-section="portfolio" href="#portfolio">Portfolio</a>
+        <a class="nav-link" data-section="about" href="#about" (click)="closeMenu()">About me</a>
+        <a class="nav-link" data-section="skills" href="#skills" (click)="closeMenu()">Skills</a>
+        <a class="nav-link" data-section="portfolio" href="#portfolio" (click)="closeMenu()">Portfolio</a>
       </nav>
 
       <div class="lang">
-        <button class="lang__btn" [class.is-active]="activeLang === 'de'" (click)="setLang('de')" type="button">
-          DE
-        </button>
-
-        <button class="lang__btn" [class.is-active]="activeLang === 'en'" (click)="setLang('en')" type="button">
-          EN
-        </button>
+        <button class="lang-btn" [class.is-active]="activeLang === 'de'" (click)="setLang('de')"
+          type="button">DE</button>
+        <button class="lang-btn" [class.is-active]="activeLang === 'en'" (click)="setLang('en')"
+          type="button">EN</button>
       </div>
     </div>
   </div>
