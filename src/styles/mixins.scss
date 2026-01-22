@@ -1,3 +1,12 @@
+@use './variables' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: $max-content;
+  margin: 0 auto;
+  padding: 0 $pad-x;
+}
+
 @mixin flex($justify: flex-start, $align: stretch, $gap: 0, $direction: row, $wrap: nowrap) {
   display: flex;
   flex-direction: $direction;
@@ -5,7 +14,7 @@
   justify-content: $justify;
   align-items: $align;
 
-  @if $gap != 0 {
+  @if $gap !=0 {
     gap: $gap;
   }
 }

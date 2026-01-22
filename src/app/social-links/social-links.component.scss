@@ -39,6 +39,14 @@
   }
 }
 
+@media (max-width: 580px){
+  .social-links{
+    .social-links__mail{
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 360px) {
   .social-links {
     gap: 12px;

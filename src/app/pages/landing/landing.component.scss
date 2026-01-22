@@ -1,380 +1,228 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-.hero {
+.landing-page {
+  position: relative;
+  overflow: hidden;
   min-height: 100vh;
   background-color: $color-bg-primary;
+  width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
 
-  @include flex(center, center);
+/* Background Glows */
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 
-  .hero-inner {
-    width: 100%;
-    max-width: $container-width;
-    margin: 0 auto;
-    padding: 0 100px;
-
-    @include flex-between-center(80px);
-  }
-
-  /* IMAGE */
-  .hero-image {
-    position: relative;
-    width: 520px;
-    max-width: 520px;
-
-    @include flex(center, flex-end);
-  }
-
-  .hero-profile {
-    width: 100%;
-    height: auto;
-    position: relative;
-    z-index: 2;
-    object-fit: cover;
-    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.35));
-  }
-
-  .hero-shadow {
+  &::before {
+    content: '';
     position: absolute;
-    pointer-events: none;
-    object-fit: contain;
+    width: 360px;
+    height: 360px;
+    left: -200px;
+    top: 220px;
+    background: $color-accent-purple;
+    opacity: 0.75;
+    filter: blur(120px);
+    border-radius: 999px;
   }
 
-  .hero-shadow-purple {
-    width: 340px;
-    left: -40px;
-    top: 120px;
-    transform: rotate(200deg);
-    z-index: 1;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    right: -260px;
+    top: 180px;
+    background: #1CE6E6;
+    opacity: 0.65;
+    filter: blur(120px);
+    border-radius: 999px;
   }
+}
 
-  .hero-shadow-green {
-    width: 520px;
-    left: 120px;
-    top: 140px;
-    transform: rotate(25deg);
-    z-index: 1;
-  }
+.wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
 
-  /* CONTENT */
-  .hero-content {
-    color: $color-text-primary;
-    z-index: 3;
+.title {
+  width: 100%;
+  display: flex;
+  grid-template-columns: 90px 1fr;
+  align-items: baseline;
+  gap: 35px;
+  justify-content: center;
+}
 
-    @include flex(flex-start, flex-start, 40px, column);
-  }
+.iam {
+  display: flex;
+  justify-content: center;
 
-  .hero-intro {
-    @include flex(flex-start, center, 32px);
-  }
-
-  .hero-iam {
+  span {
     font-size: 70px;
     transform: rotate(-90deg);
     white-space: nowrap;
     opacity: 0.9;
-    z-index: 4;
-  }
-
-  .hero-title {
-    @include flex(flex-start, flex-start, 12px, column);
-
-    h1 {
-      margin: 0;
-      font-size: 90px;
-      font-weight: 700;
-      line-height: 1.05;
-      z-index: 4;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 58px;
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: $color-accent-purple;
-      z-index: 4;
-    }
-  }
-
-  .hero-actions {
-    margin-top: 16px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .btn-primary {
-    z-index: 4;
-    width: 180px;
-    height: 60px;
-    background-color: $color-accent-green;
     color: $color-text-primary;
-    border-radius: 15px;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    transition: transform $transition-fast, background-color $transition-fast;
-
-    &:hover {
-      background-color: $color-accent-purple;
-      transform: translateY(-2px);
-    }
   }
 }
 
-.hero-about-bridge {
-  position: relative;
-  z-index: 2;
-  margin-top: -680px;
-  pointer-events: none;
+/* Title Block */
+.main-title {
+  color: $color-text-primary;
 }
 
-.hero-about-shape {
-  display: block;
+.name {
+  margin: 0;
+  font-size: 128px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $color-accent-purple;
+}
+
+.hero-actions {
+  margin-top: 72px;
   width: 100%;
-  max-width: 100%;
-  margin-left: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.hero-about-socials {
-  position: relative;
+.talk-btn {
   display: flex;
+  justify-content: center;
+  margin-top: 72px;
+}
+
+.btn-primary {
+  z-index: 6;
+  width: 180px;
+  height: 60px;
+  background-color: $color-accent-green;
+  color: $color-text-primary;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform $transition-fast, background-color $transition-fast;
+
+  &:hover {
+    background-color: $color-accent-purple;
+    transform: translateY(-2px);
+  }
+}
+
+.scroll-down {
+  position: absolute;
+  right: 40px;
+  bottom: 130px;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  flex-direction: row;
-  gap: 32px;
-  top: -550px;
-  pointer-events: auto;
-}
+  gap: 12px;
 
-.social-line {
-  display: flex;
-  width: 60px;
-  height: 2px;
-  background-color: $color-accent-purple;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1560px) {
-  .hero-about-bridge {
-    margin-top: -650px;
-  }
-}
-
-@media (max-width: 1440px) {
-  .hero-about-bridge {
-    margin-top: -610px;
-  }
-}
-
-
-
-@media (max-width: 1300px) {
-  .hero .hero-inner {
-    padding: 0 24px;
-    gap: 0;
-  }
-
-  .hero .hero-title {
-    h1 {
-      font-size: 70px;
-    }
-
-    h2 {
-      font-size: 38px;
-    }
-  }
-
-  .hero-about-socials {
-    top: -500px;
-  }
-
-  .hero-about-bridge {
-    margin-top: -580px;
-  }
-}
-
-@media (max-width: 1230px) {
-  .hero-about-bridge {
-    margin-top: -600px;
-  }
-
-  .hero-about-socials {
-    top: -400px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hero .hero-inner {
-    @include flex(center, center, 32px, column);
-    text-align: center;
-  }
-
-  .hero .hero-content {
-    align-items: center;
-  }
-
-  .hero .hero-title {
-    align-items: center;
-  }
-
-  .hero .hero-intro {
-    justify-content: center;
-  }
-
-  .hero .hero-iam {
-    font-size: 50px;
-  }
-
-  .hero-about-bridge {
-    margin-top: -620px;
-  }
-
-  .hero-about-socials {
-    top: -30px;
-  }
-
-}
-
-@media (max-width: 900px) {
-  .hero-about-bridge {
-    margin-top: -600px;
-  }
-
-  .hero-about-socials {
-    top: 50px;
-  }
-}
-
-@media (max-width: 755px) {
-
-  .hero-intro {
-    gap: 0;
-  }
-
-  .hero-about-bridge {
-    margin-top: -600px;
-  }
-
-  .hero-about-socials {
-    top: 100px;
-  }
-
-}
-
-@media (max-width: 640px) {
-  .hero {
-    .hero-shadow-purple {
-      top: -150px;
-      left: -100px;
-
-    }
-
-    .hero-shadow-green {
-      top: -150px;
-      left: 60px;
-
-    }
-  }
-
-  .hero-about-bridge {
-    margin-top: -580px;
-  }
-
-  .hero .hero-inner {
-    padding: 0 16px;
-    gap: 24px;
-  }
-
-  .hero .hero-image {
-    max-width: 340px;
-  }
-
-  .hero .hero-iam {
-    font-size: 34px;
-    margin-left: -10px;
-  }
-
-  .hero .hero-title {
-    align-items: flex-start;
-    text-align: left;
-
-    h1 {
-      font-size: 44px;
-    }
-
-    h2 {
-      font-size: 20px;
-    }
-  }
-
-  .hero .btn-primary {
-    width: 160px;
-    height: 54px;
+  span {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
     font-size: 18px;
-    z-index: 40;
+    color: $color-text-primary;
+    opacity: 0.8;
   }
 
-}
-
-@media (max-width:570px){
-  .hero-about-bridge {
-    margin-top: -560px;
+  img {
+    width: 18px;
+    height: auto;
+    animation: scrollBounce 1.6s infinite;
   }
 
-  .hero-about-socials {
-    top: 150px;
-    padding: 0 16px;
-  }
-}
-
-@media (max-width: 510px) {
-  .hero-about-socials {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .social-line {
+  @media (max-width: 950px) {
     display: none;
   }
 }
 
-@media (max-width: 470px){
-  .hero-about-bridge {
-    margin-top: -550px;
+@keyframes scrollBounce {
+  0% {
+    transform: translateY(0);
   }
-  
+
+  50% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
-@media (max-width: 440px){
-  .hero-about-bridge {
-    margin-top: -535px;
+/* Responsive */
+@media (max-width: 1300px) {
+  .name {
+    font-size: 100px;
   }
-  .hero{
-    overflow-x: clip
-    ;
-    .hero-shadow-green{
-      max-width: 400px;
 
-
-    }
+  .subtitle {
+    font-size: 44px;
   }
-  
+
+  .iam span {
+    font-size: 45px;
+  }
 }
 
-@media (max-width: 360px) {
-  .hero-about-bridge {
-    margin-top: -530px;
+@media (max-width: 900px) {
+  .title {
+    grid-template-columns: 70px 1fr;
+    gap: 32px;
   }
 
-  .hero-about-socials {
-    left: 16px;
-    top: 250px;
-    width: calc(100% - 32px);
-    gap: 0;
+  .name {
+    font-size: 64px;
+  }
+
+  .subtitle {
+    font-size: 34px;
+  }
+
+  .iam span {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .iam {
+    display: none;
+  }
+
+  .main-title {
+    align-items: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 }

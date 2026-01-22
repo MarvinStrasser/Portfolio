@@ -16,7 +16,7 @@ a {
 /* ===== LAYOUT ===== */
 
 .header-inner {
-  max-width: $container-width;
+  max-width: $max-content;
   margin: 0 auto;
   padding: 35px 100px;
   @include flex-between-center;
