@@ -1,15 +1,17 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .my-skills-container {
     display: flex;
     justify-content: space-between;
     color: white;
-    max-width: 1440px;
+    max-width: 1920px;
 
 
     .skills {
         margin-left: 100px;
         display: flex;
         flex-direction: column;
-        height: 414px;
         width: 721px;
         gap: 54px;
         margin-right: 48px;
@@ -38,12 +40,14 @@
         flex-direction: column;
         gap: 10px;
         align-items: center;
+        justify-content: center;
+        height: 88px;
+        width: 95px;
     }
 
     .skills-description {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
         width: 471px;
         margin-right: 42px;
         gap: 34px;
@@ -62,26 +66,31 @@
             font-weight: 400;
         }
 
-        button {
-            margin-right: 135px;
-            width: 165px;
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            z-index: 6;
+            width: 180px;
             height: 60px;
-            background: #70E61C;
+            background-color: $color-accent-green;
+            color: $color-text-primary;
             border-radius: 15px;
-            color: white;
-            font-size: 23px;
-            font-weight: 400;
-            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            border: none;
+            font-size: 20px;
             cursor: pointer;
-            transition: 0.1s ease;
+            transition: transform $transition-fast, background-color $transition-fast;
 
             &:hover {
-                width: 175px;
-                height: 70px;
-                background-color: #4B47FF;
+                background-color: $color-accent-purple;
+                transform: translateY(-2px);
             }
         }
     }
+
+
 
     .purple-line {
         width: 100px;

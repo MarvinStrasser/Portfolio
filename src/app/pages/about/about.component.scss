@@ -12,10 +12,10 @@ a {
   position: relative;
   width: 100%;
   background-color: $color-bg-primary;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: hidden;
   z-index: 10;
 }
-
 
 .about-me-container {
   width: 100%;
@@ -34,7 +34,7 @@ a {
 .left-content {
   width: 50%;
   box-sizing: border-box;
-  z-index: 5;
+  z-index: 10;
 
   h2 {
     font-size: 90px;
@@ -71,6 +71,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    top: 90px;
   }
 }
 
@@ -78,7 +79,7 @@ a {
   position: relative;
   z-index: 2;
   object-fit: cover;
-  width: 80%;
+  width: 100%;
 }
 
 .purple {
@@ -95,7 +96,7 @@ a {
   position: absolute;
   z-index: 1;
   width: clamp(320px, 45vw, 500px);
-  right: -160px;
+  right: -135px;
   pointer-events: none;
   opacity: 0.5;
 }
@@ -134,6 +135,10 @@ a {
     width: 100%;
     padding-right: 0;
     max-width: 900px;
+
+    h2 {
+      margin-top: 90px;
+    }
   }
 }
 
@@ -149,14 +154,38 @@ a {
   }
 }
 
+@media (max-width: 610px) {
+  .about-me-container {
+    gap: 125px;
+  }
+}
+
 @media (max-width: 580px) {
   .about-me-left-content h2 {
     font-size: 65px;
   }
 }
 
+@media (max-width: 502px) {
+  .about-me-container {
+    gap: 200px;
+  }
+}
+
+@media (max-width: 472px) {
+  .about-me-container {
+    gap: 155px;
+  }
+}
+
+@media (max-width: 417px) {
+  .about-me-container {
+    gap: 125px;
+  }
+}
+
 @media (max-width: 400px) {
-  .about-me-left-content h2 {
-    font-size: 49px;
+  .left-content h2 {
+    font-size: 45px;
   }
 }

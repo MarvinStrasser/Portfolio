@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class SkillsComponent {
 
   scrollToSection(): void {
-    const el = document.getElementById('contact'); // oder 'contact-me' etc.
+    const el = document.getElementById('contact');
     el?.scrollIntoView({ behavior: 'smooth' });
   }
 }
