@@ -3,7 +3,6 @@ import { AboutComponent } from '../about/about.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { PortfolioComponent } from '../portfolio/portfolio.component';
 import { ContactComponent } from '../contact/contact.component';
-import { SocialLinksComponent } from '../../social-links/social-links.component';
 import { TranslationService } from '../../translation/translation.component';
 
 @Component({
@@ -14,7 +13,6 @@ import { TranslationService } from '../../translation/translation.component';
     SkillsComponent,
     PortfolioComponent,
     ContactComponent,
-    SocialLinksComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']

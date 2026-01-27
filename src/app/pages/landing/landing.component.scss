@@ -3,12 +3,13 @@
 
 .landing-page {
   position: relative;
-  overflow: hidden;
   min-height: 100vh;
   background-color: $color-bg-primary;
   width: 100%;
   padding: 0 16px;
+  padding-bottom: var(--shape-overlap);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .bg {
@@ -20,33 +21,34 @@
   &::before {
     content: '';
     position: absolute;
-    width: 360px;
-    height: 360px;
-    left: -200px;
-    top: 220px;
-    background: $color-accent-purple;
-    opacity: 0.75;
-    filter: blur(120px);
-    border-radius: 999px;
+    width: 572px;
+    height: 608px;
+    left: -100px;
+    top: 10px;
+    background-image: url('../../../assets/img/shadows/Purple\ shadow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
 
   &::after {
     content: '';
     position: absolute;
-    width: 480px;
-    height: 480px;
-    right: -260px;
+    width: 679px;
+    height: 573px;
+    right: -230px;
     top: 180px;
-    background: #1CE6E6;
-    opacity: 0.65;
-    filter: blur(120px);
-    border-radius: 999px;
+
+    background-image: url('../../../assets/img/shadows/blue\ shadow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
 }
 
 .wrapper {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;

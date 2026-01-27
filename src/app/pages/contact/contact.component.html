@@ -1,70 +1,64 @@
 <div id="contact">
+    <div class="bg"></div>
     <div class="contact-box">
         <div class="contact-container">
             <div class="purple-line"></div>
-            <h1>Contact</h1>
+            <h1>{{ t.t('contact.title') }}</h1>
         </div>
 
         <div class="contact-me-container">
             <div class="contact-me">
-                <h2>Got a problem to solve?</h2>
-                <p>
-                    Contact me through this form, I am interested in hearing
-                    you, knowing your ideas and contributing to your projects
-                    with my work.
-                </p>
-                <span>Need a Frontend developer? <b>Contact me!</b></span>
+                <h2>{{ t.t('contact.headline') }}</h2>
+                <p>{{ t.t('contact.text') }}</p>
+                <span>{{ t.t('contact.ctaLine') }} <b>{{ t.t('contact.ctaBold') }}</b></span>
             </div>
 
             <form class="contact-form" #myForm novalidate>
                 <div class="wrapper">
-                    <input required type="text" name="name" placeholder="Your name" #nameField (blur)="onBlur($event)"
-                        (focus)="onFocus($event, 'name')" (input)="onInput('name')">
-                    <span [class.transparent]="!requiredAlertName">Your name is required</span>
+                    <input required type="text" name="name" [placeholder]="t.t('contact.namePh')" #nameField
+                        (blur)="onBlur($event)" (focus)="onFocus($event, 'name')" (input)="onInput('name')">
+                    <span [class.transparent]="!requiredAlertName">{{ t.t('contact.nameReq') }}</span>
                     <img *ngIf="greenCheckMarkName" src="assets/img/green-mark.png" />
                 </div>
 
                 <div class="wrapper">
-                    <input type="email" name="email" placeholder="Your email" #emailField required
+                    <input type="email" name="email" [placeholder]="t.t('contact.emailPh')" #emailField required
                         pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" (blur)="onBlur($event)"
                         (focus)="onFocus($event, 'email')" (input)="onInput('email')">
-                    <span [class.transparent]="!requiredAlertEmail">Your email is required</span>
+                    <span [class.transparent]="!requiredAlertEmail">{{ t.t('contact.emailReq') }}</span>
                     <img *ngIf="greenCheckMarkEmail" src="assets/img/green-mark.png" />
                 </div>
 
                 <div class="wrapper">
-                    <textarea type="text" name="message" placeholder="Your message" #messageField required
+                    <textarea type="text" name="message" [placeholder]="t.t('contact.msgPh')" #messageField required
                         (blur)="onBlur($event)" (focus)="onFocus($event, 'message')"
                         (input)="onInput('message')"></textarea>
-                    <span [class.transparent]="!requiredAlertMessage">Please insert your message</span>
+                    <span [class.transparent]="!requiredAlertMessage">{{ t.t('contact.msgReq') }}</span>
                     <img *ngIf="greenCheckMarkMessage" src="assets/img/green-mark.png" />
                 </div>
 
                 <div class="send-container">
                     <button class="send-btn contact-btn" #sendbutton type="button" (click)="sendEmail()"
                         [ngClass]="{ sent: emailSent, 'd-none': addClassToButton }">
-                        <span *ngIf="!emailSent"> Send Message </span>
+                        <span *ngIf="!emailSent">{{ t.t('contact.send') }}</span>
                     </button>
+
                     <div class="message-sent-container">
                         <span *ngIf="emailSent && showSpanMsg" class="message-sent">
-                            Your email has been sent successfully!</span>
+                            {{ t.t('contact.sent') }}
+                        </span>
                     </div>
                 </div>
             </form>
-
         </div>
 
         <div class="scroll-up-button">
-            <img (click)="scrollToSection()" src="assets/img/Go-up-button-white.png" alt="scroll up button"
+            <img (click)="scrollToSection()" src="assets/img/Go-up-button-white.png" [alt]="t.t('contact.scrollUpAlt')"
                 class="none-hovered">
 
-            <img (click)="scrollToSection()" src="assets/img/Go-up-button-green.png" alt="scroll up button"
+            <img (click)="scrollToSection()" src="assets/img/Go-up-button-green.png" [alt]="t.t('contact.scrollUpAlt')"
                 class="hovered">
         </div>
-
     </div>
 
-    <div class="purple-shadow4">
-        <img src="assets/img/shadows/Purple-shadow-4.png" alt="">
-    </div>
 </div>

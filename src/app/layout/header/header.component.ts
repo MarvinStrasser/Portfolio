@@ -1,11 +1,12 @@
 import { Component, OnDestroy, AfterViewInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslationService, Lang } from '../../translation/translation.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
+  imports: [RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -17,10 +18,8 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   constructor(private router: Router, public i18n: TranslationService) {}
 
   ngAfterViewInit(): void {
-    // 1) Direkt einmal versuchen
     this.initActiveSectionObserver();
 
-    // 2) Und nach jeder Navigation nochmal (wichtig wegen router-outlet)
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe(() => {
@@ -59,7 +58,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     sections.forEach((s) => this.observer!.observe(s));
   }
 
-  // === Language (via service + localStorage) ===
   get activeLang(): Lang {
     return this.i18n.lang;
   }
@@ -72,7 +70,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     return this.i18n.t(key);
   }
 
-  // === Burger ===
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
     document.body.classList.toggle('no-scroll', this.menuOpen);

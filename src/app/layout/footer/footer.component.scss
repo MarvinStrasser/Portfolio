@@ -99,11 +99,10 @@
 }
 
 @media(max-width: 700px) {
-    .footer-left span {
-        display: none;
+
+    .footer-left{
+        gap: 20px;
     }
-
-
 
     .footer-left a {
         font-size: 24px;

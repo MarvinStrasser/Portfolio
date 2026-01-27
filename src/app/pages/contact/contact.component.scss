@@ -10,19 +10,34 @@
     margin: 0 auto;
 }
 
-.purple-shadow4 {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    top: 5280px;
+#contact {
+    position: relative;
+    overflow: hidden;
+}
 
-    img {
-        width: auto;
-        height: 200px;
-        object-fit: contain;
-        flex-shrink: 0;
+.bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 681px;
+        height: 1127px;
+        right: -130px;
+        bottom: -160px;
+        background: url('../../../assets/img/shadows/Purple\ shadow\ 2.png') no-repeat center / contain;
+        opacity: 0.65;
     }
+}
+
+/* Content über BG */
+.contact-box,
+.purple-shadow4 {
+    position: relative;
+    z-index: 1;
 }
 
 .contact-container {

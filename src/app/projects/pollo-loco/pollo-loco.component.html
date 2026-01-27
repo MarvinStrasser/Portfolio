@@ -4,24 +4,24 @@
         <div class="pollo-loco-text">
             <h3>El Pollo Loco</h3>
             <p>Javascript | HTML | CSS </p>
-            <span>A simple Jump-and-Run game based on an object-oriented approach. 
-                Help Pepe to find coins and salsa bottles to fight against the enemy chickens.</span>
+
+            <span>
+                {{ t.t('project.pollo.desc') }}
+            </span>
         </div>
+
         <div class="testing">
             <a href="http://el-pollo-loco.marvin-strasser.de/" target="_blank">
-                <button class="live-test-btn">Live test</button>
+                <button class="live-test-btn">{{ t.t('project.pollo.live') }}</button>
             </a>
 
             <a href="https://github.com/MarvinStrasser/El_Pollo_Loco" target="_blank">
-                <button class="github-btn">Github</button>
+                <button class="github-btn">{{ t.t('project.pollo.github') }}</button>
             </a>
         </div>
     </div>
 
     <div class="pollo-loco-screens">
-        <img src="assets/img/ElPolloLoco_01.png" alt="kanban board image">
+        <img src="assets/img/ElPolloLoco_01.png" [alt]="t.t('project.pollo.alt')">
     </div>
 </div>
-
-
-

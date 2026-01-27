@@ -1,6 +1,6 @@
 <div class="join-container">
     <div class="join-screens">
-        <img src="assets/img/Join_screens.png" alt="kanban board image">
+        <img src="assets/img/Join_screens.png" [alt]="t.t('project.join.alt')">
     </div>
 
     <div class="join-description">
@@ -8,20 +8,18 @@
             <h3>Join</h3>
             <p>HTML | SCSS | Firebase</p>
             <span>
-                Task management application inspired by the Kanban system.
-                Create and organize tasks with drag & drop, assign users and categories, and track progress across
-                boards.
+                {{ t.t('project.join.desc') }}
             </span>
         </div>
+
         <div class="testing">
             <a href="http://join.marvin-strasser.de/" target="_blank">
-                <button class="live-test-btn">Live test</button>
+                <button class="live-test-btn">{{ t.t('project.join.live') }}</button>
             </a>
 
             <a href="https://github.com/MarvinStrasser/Join_Kanban-App" target="_blank">
-                <button class="github-btn">Github</button>
+                <button class="github-btn">{{ t.t('project.join.github') }}</button>
             </a>
         </div>
     </div>
-
 </div>

@@ -1,1 +1,60 @@
-<p>imprint works!</p>
+<section class="legal">
+  <div class="legal-container">
+    <a class="legal-back" routerLink="/" aria-label="Go back">
+      <img src="../../../assets/img/Go back button.png" alt="Go back" />
+    </a>
+
+    <header class="legal-header">
+      <span class="legal-line" aria-hidden="true"></span>
+      <h1 class="legal-title">{{ t('legal.title') }}</h1>
+      <span class="legal-line" aria-hidden="true"></span>
+    </header>
+
+    <div class="legal-content">
+      <h2 class="legal-h2">{{ t('legal.imprint.title') }}</h2>
+
+      <p class="legal-p">
+        <strong>{{ t('legal.imprint.name') }}</strong><br />
+        {{ t('legal.imprint.street') }}<br />
+        {{ t('legal.imprint.city') }}
+      </p>
+
+      <h3 class="legal-h3">{{ t('legal.exploring.title') }}</h3>
+      <p class="legal-p">
+        {{ t('legal.exploring.emailLabel') }}:
+        <a class="legal-link" [href]="t('legal.exploring.emailHref')">
+          <span [innerHTML]="t('legal.exploring.emailHtml')"></span>
+        </a>
+      </p>
+
+      <h3 class="legal-h3">{{ t('legal.acceptance.title') }}</h3>
+      <p class="legal-p">{{ t('legal.acceptance.text') }}</p>
+
+      <h3 class="legal-h3">{{ t('legal.scope.title') }}</h3>
+      <p class="legal-p">{{ t('legal.scope.text') }}</p>
+
+      <h3 class="legal-h3">{{ t('legal.rights.title') }}</h3>
+      <p class="legal-p">{{ t('legal.rights.text') }}</p>
+
+      <h3 class="legal-h3">{{ t('legal.use.title') }}</h3>
+      <p class="legal-p">{{ t('legal.use.text') }}</p>
+
+      <h3 class="legal-h3">{{ t('legal.disclaimer.title') }}</h3>
+      <p class="legal-p">{{ t('legal.disclaimer.text') }}</p>
+
+      <h3 class="legal-h3">{{ t('legal.indemnity.title') }}</h3>
+      <p class="legal-p">{{ t('legal.indemnity.text') }}</p>
+
+      <p class="legal-p legal-p--spaced">
+        {{ t('legal.questions.text') }}
+        <a class="legal-link" [href]="t('legal.questions.emailHref')">
+          <span [innerHTML]="t('legal.questions.emailHtml')"></span>
+        </a>
+      </p>
+
+      <p class="legal-p legal-p--muted">
+        {{ t('legal.date.label') }}: {{ t('legal.date.value') }}
+      </p>
+    </div>
+  </div>
+</section>

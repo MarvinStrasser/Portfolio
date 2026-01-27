@@ -9,6 +9,7 @@
     justify-content: flex-end;
     max-width: $max-content;
     margin: 0 auto;
+    margin-bottom: 110px;
 
     .pollo-loco-screens {
         width: 100%;
@@ -135,17 +136,18 @@
             justify-content: center;
             align-items: center;
             padding: 0px 16px;
+            gap: 20px;
 
             .pollo-loco-text {
                 align-items: flex-end;
-                margin-top: 30px;
+                margin-top: 90px;
             }
         }
-    }
 
-    .green-shadow2 {
-        top: 3848px;
-        right: 0;
+        .testing{
+            margin-bottom: 50px;
+        }
+
     }
 }
 

@@ -13,8 +13,22 @@ a {
   width: 100%;
   background-color: $color-bg-primary;
   overflow-x: hidden;
-  overflow-y: hidden;
-  z-index: 10;
+  overflow-y: visible;
+  padding-bottom: clamp(80px, 12vw, 220px);
+}
+
+.bg-shape {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  height: var(--shape-h);
+  background-image: url('/assets/img/bg-shape.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .about-me-container {
@@ -27,14 +41,15 @@ a {
   align-items: end;
   color: $color-text-primary;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  z-index: auto;
+  overflow: visible;
 }
 
 .left-content {
   width: 50%;
   box-sizing: border-box;
-  z-index: 10;
+  position: relative;
+  z-index: 3;
 
   h2 {
     font-size: 90px;
@@ -64,37 +79,38 @@ a {
 .right-content {
   width: 50%;
   box-sizing: border-box;
-  z-index: 5;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
 
   .right-content-image {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 90px;
+    margin-top: 90px;
   }
 }
 
 .profile-img {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   object-fit: cover;
   width: 100%;
 }
 
 .purple {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   width: clamp(260px, 40vw, 400px);
   left: -30px;
   pointer-events: none;
   opacity: 0.5;
 }
 
-
 .green {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   width: clamp(320px, 45vw, 500px);
   right: -135px;
   pointer-events: none;
@@ -121,7 +137,6 @@ a {
   }
 }
 
-
 @media (max-width: 1090px) {
   .about-me-container {
     flex-direction: column-reverse;
@@ -140,52 +155,38 @@ a {
       margin-top: 90px;
     }
   }
-}
 
-@media (max-width: 950px) {
-  .about-me-container {
-    padding: 100px 16px;
+  .bg-shape {
+    bottom: auto; // bottom abschalten
+    top: clamp(482px, 88vw, 970px); // <- hier sitzt sie stabiler (anpassen)
   }
 }
 
-@media (max-width: 830px) {
-  .about-me-container {
-    padding: 100px 24px;
-  }
-}
 
-@media (max-width: 610px) {
-  .about-me-container {
-    gap: 125px;
-  }
-}
 
-@media (max-width: 580px) {
+@media (max-width: 569px) {
   .about-me-left-content h2 {
     font-size: 65px;
   }
 }
 
-@media (max-width: 502px) {
+@media (max-width: 413px) {
   .about-me-container {
-    gap: 200px;
+    padding: 16px;
   }
-}
 
-@media (max-width: 472px) {
-  .about-me-container {
-    gap: 155px;
-  }
-}
-
-@media (max-width: 417px) {
-  .about-me-container {
-    gap: 125px;
-  }
-}
-
-@media (max-width: 400px) {
   .left-content h2 {
     font-size: 45px;
+  }
+
+  .bg-shape {
+    top: clamp(360px, 88vw, 970px);
+  }
+
+}
+
+@media (max-width: 350px) {
+  .bg-shape {
+    top: clamp(320px, 88vw, 970px);
   }
 }

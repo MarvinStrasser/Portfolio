@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslationService } from '../../translation/translation.component';
 
 @Component({
   selector: 'app-skills',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './skills.component.scss'
 })
 export class SkillsComponent {
+  constructor(public t: TranslationService) { }
 
   scrollToSection(): void {
     const el = document.getElementById('contact');

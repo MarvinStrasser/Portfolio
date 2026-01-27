@@ -39,6 +39,48 @@
     }
 }
 
+#portfolio {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-head-container,
+.portfolio-projects {
+    position: relative;
+    z-index: 1;
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        left: -140px;
+        top: 820px;
+
+        background: url('../../../assets/img/shadows/Green-shadow-Foto.png') no-repeat center / contain;
+        opacity: 0.7;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 589px;
+        height: 608px;
+        right: -140px;
+        bottom: 920px;
+
+        background: url('../../../assets/img/shadows/Blue\ shadow\ 1.png') no-repeat center / contain;
+        opacity: 0.85;
+    }
+}
+
 .portfolio-projects {
     display: flex;
     flex-direction: column;

@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslationService } from '../../translation/translation.component';
 
 type FieldEl = HTMLInputElement | HTMLTextAreaElement;
 
@@ -11,7 +12,6 @@ type FieldEl = HTMLInputElement | HTMLTextAreaElement;
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
-  // Erlaubt dynamische Zugriffe wie this["requiredAlertName"]
   [key: string]: any;
 
   @ViewChild('myForm') myForm!: ElementRef<HTMLFormElement>;
@@ -34,7 +34,8 @@ export class ContactComponent {
 
   target!: FieldEl;
 
-  constructor() { }
+  constructor(public t: TranslationService) { }
+
 
   private isValidEmail(value: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
