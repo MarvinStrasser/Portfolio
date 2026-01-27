@@ -18,19 +18,27 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 $to = 'marvin.strasser@icloud.com';
-
 $subject = 'Neue Nachricht über marvin-strasser.de';
+
 $body =
-  "Name: $name\n" .
-  "E-Mail: $email\n\n" .
-  "Nachricht:\n$message\n";
+  "Name: {$name}\n" .
+  "E-Mail: {$email}\n\n" .
+  "Nachricht:\n{$message}\n";
 
-$from = 'no-reply@marvin-strasser.de';
+$fromEmail = 'no-reply@marvin-strasser.de';
+$fromName  = 'Portfolio';
 
-$headers  = "From: Portfolio <$from>\r\n";
-$headers .= "Reply-To: $email\r\n";
+$headers  = "From: {$fromName} <{$fromEmail}>\r\n";
+$headers .= "Reply-To: {$email}\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-$sent = mail($to, $subject, $body, $headers);
+$sent = mail($to, $subject, $body, $headers, "-f$from");
 
-echo json_encode(['ok' => $sent]);
+if (!$sent) {
+  http_response_code(500);
+  echo json_encode(['ok' => false, 'error' => 'mail() failed']);
+  exit;
+}
+
+echo json_encode(['ok' => true]);

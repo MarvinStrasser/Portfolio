@@ -1,26 +1,29 @@
-<section class="landing-page">
+<section id="landing-page" class="landing-page">
   <div class="bg">
   </div>
+
   <div class="wrapper">
     <div class="title">
       <div class="iam">
-        <span>I am</span>
+        <span>{{ t('hero.iam') }}</span>
       </div>
 
       <div class="main-title">
         <h1 class="name">Marvin Straßer</h1>
-        <p class="subtitle">FRONTEND DEVELOPER</p>
+        <p class="subtitle">{{ t('hero.subtitle') }}</p>
+
         <div class="talk-btn">
           <button type="button" class="btn btn-primary" (click)="scrollToContact()">
-            Let's talk
+            {{ t('hero.cta') }}
           </button>
         </div>
       </div>
     </div>
   </div>
+
   <div class="scroll-down">
-    <span>Scroll down</span>
-    <img src="assets/img/down-arrow.png" alt="Scroll down">
+    <span>{{ t('hero.scrolldown') }}</span>
+    <img src="assets/img/down-arrow.png" [attr.alt]="t('hero.scrolldown')">
   </div>
 </section>
 

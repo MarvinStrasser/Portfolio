@@ -16,7 +16,7 @@
                 <span>Need a Frontend developer? <b>Contact me!</b></span>
             </div>
 
-            <form (submit)="sendEmail()" class="contact-form" #myForm ngNativeValidate>
+            <form class="contact-form" #myForm novalidate>
                 <div class="wrapper">
                     <input required type="text" name="name" placeholder="Your name" #nameField (blur)="onBlur($event)"
                         (focus)="onFocus($event, 'name')" (input)="onInput('name')">
@@ -25,8 +25,9 @@
                 </div>
 
                 <div class="wrapper">
-                    <input type="text" name="email" placeholder="Your email" #emailField required
-                        (blur)="onBlur($event)" (focus)="onFocus($event, 'email')" (input)="onInput('email')">
+                    <input type="email" name="email" placeholder="Your email" #emailField required
+                        pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" (blur)="onBlur($event)"
+                        (focus)="onFocus($event, 'email')" (input)="onInput('email')">
                     <span [class.transparent]="!requiredAlertEmail">Your email is required</span>
                     <img *ngIf="greenCheckMarkEmail" src="assets/img/green-mark.png" />
                 </div>
@@ -40,7 +41,7 @@
                 </div>
 
                 <div class="send-container">
-                    <button class="send-btn contact-btn" #sendbutton type="submit"
+                    <button class="send-btn contact-btn" #sendbutton type="button" (click)="sendEmail()"
                         [ngClass]="{ sent: emailSent, 'd-none': addClassToButton }">
                         <span *ngIf="!emailSent"> Send Message </span>
                     </button>

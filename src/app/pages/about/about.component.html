@@ -1,51 +1,33 @@
 <section id="about-me" class="about-me">
-    <div class="about-me-container">
-        <div class="about-social">
-            <app-social-links></app-social-links>
-        </div>
-
-        <div class="left-content">
-            <h2>About Me</h2>
-            <p> Hi, I am a Junior Front-End Developer based in Ruhpolding, Germany.
-                After 12 years of military service, including leadership experience as a Deputy Platoon Leader and three
-                international deployments, I decided to pursue my long-standing passion for technology and programming.
-
-                During my career in the military, I developed strong skills in teamwork, responsibility, discipline, and
-                problem-solving - qualities that I now apply to software development.
-
-                Through my training at Developer Akademie, I gained hands-on experience in building modern web
-                applications using Angular and JavaScript. What started as an interest has grown into a true passion,
-                and I am excited to begin my professional career in IT.
-            </p>
-            <div class="left-content-infos">
-                <div class="flex-row">
-                    <img src="assets/img/bulb.png" alt="">
-                    <div>
-                        I am excited to take the next step in my career as a Junior Web Developer and become part of a
-                        motivated and collaborative team.
-                        My goal is to continuously grow my skills while contributing to meaningful projects and
-                        developing modern, user-friendly, and visually appealing applications.
-                    </div>
-                </div>
-
-                <div class="flex-row">
-                    <img src="assets/img/puzzle.png" alt="">
-                    <div>
-                        If you think I could be a valuable addition to your team and projects, I would be happy to
-                        connect.
-                        Lets discuss how we can work together to create effective and high-quality web solutions.
-                        Feel free to get in touch at any time.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="right-content">
-            <div class="right-content-image">
-                <img src="./../../../assets/img/shadows/Green-shadow-Foto.png" alt="" class="green">
-                <img src="./../../../assets/img/shadows/Purple-shadow-Foto.png" alt="" class="purple">
-                <img class="profile-img" src="assets/img/portfolio-img.png" alt="face image">
-            </div>
-        </div>
+  <div class="about-me-container">
+    <div class="about-social">
+      <app-social-links></app-social-links>
     </div>
+
+    <div class="left-content">
+      <h2>{{ t('about.title') }}</h2>
+
+      <p>{{ t('about.intro') }}</p>
+
+      <div class="left-content-infos">
+        <div class="flex-row">
+          <img src="assets/img/bulb.png" [attr.alt]="t('about.bulbAlt')">
+          <div>{{ t('about.block1') }}</div>
+        </div>
+
+        <div class="flex-row">
+          <img src="assets/img/puzzle.png" [attr.alt]="t('about.puzzleAlt')">
+          <div>{{ t('about.block2') }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-content">
+      <div class="right-content-image">
+        <img src="./../../../assets/img/shadows/Green-shadow-Foto.png" alt="" class="green">
+        <img src="./../../../assets/img/shadows/Purple-shadow-Foto.png" alt="" class="purple">
+        <img class="profile-img" src="assets/img/portfolio-img.png" [attr.alt]="t('about.profileAlt')">
+      </div>
+    </div>
+  </div>
 </section>

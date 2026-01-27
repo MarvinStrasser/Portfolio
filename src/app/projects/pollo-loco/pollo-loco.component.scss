@@ -1,13 +1,17 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .pollo-loco-container {
     display: flex;
     color: white;
     align-items: center;
-    margin-top: 116px;
+    padding-top: 116px;
     justify-content: flex-end;
-    max-width: 1440px !important;
+    max-width: $max-content;
+    margin: 0 auto;
 
     .pollo-loco-screens {
-        width: 620px;
+        width: 100%;
         height: 339px;
         display: flex;
         align-items: center;
@@ -18,7 +22,7 @@
 
 
         img {
-            width: 370px;
+            max-width: 370px;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
@@ -107,120 +111,128 @@
 
 .green-shadow2 {
     position: absolute;
-    top: 2950px !important;
+    top: 2950px;
     height: 500px;
     flex-shrink: 0;
     z-index: 3;
-    right: 0 !important;
+    right: 0;
 }
 
-@media(max-width: 1090px) { 
+@media(max-width: 1090px) {
     .pollo-loco-container {
-        flex-direction: column-reverse !important;
-        margin-right: 0px !important;
-        margin-top: 50px !important;
-    }
+        flex-direction: column-reverse;
+        margin-right: 0px;
 
-    .pollo-loco-screens {
-        padding: 0px !important;
-    }
-
-    .pollo-loco-description {
-        margin-left: unset !important;
-        box-sizing: border-box !important;
-        width: 100% !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 0px 100px !important;
-    }
-
-    .pollo-loco-text {
-        align-items: center !important;
-
-        h3 {
-            font-size: 44px !important;
+        .pollo-loco-screens {
+            padding: 0px;
+            margin: 0;
         }
-        p {
-            font-size: 18px !important;
-        }
-        span {
-            text-align: center !important;
+
+        .pollo-loco-description {
+            margin-left: unset;
+            box-sizing: border-box;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 16px;
+
+            .pollo-loco-text {
+                align-items: flex-end;
+                margin-top: 30px;
+            }
         }
     }
 
-    .green-shadow2 { 
-        top: 3848px !important;
-        right: 0 !important;
+    .green-shadow2 {
+        top: 3848px;
+        right: 0;
     }
 }
 
 @media (max-width: 700px) {
+    .pollo-loco-container{
+        padding: 0 16px;
+    }
     .pollo-loco-description {
-        width: 90% !important;
-        padding: 0px 0px !important;
+        width: 90%;
+        padding: 0px 0px;
     }
 
     .live-test-btn {
-        margin-right: 50px !important;
+        margin-right: 50px;
     }
 }
 
-@media (max-width: 580px) { 
-    .live-test-btn {
-        margin-right: 10px !important;
+@media (max-width: 544px) {
+    .pollo-loco-container {
+        .pollo-loco-description {
+            .testing {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+
+
+                .live-test-btn {
+                    margin: 0;
+                }
+            }
+        }
     }
 }
 
 @media (max-width: 490px) {
     .live-test-btn {
-        width: 140px !important;
-        height: 55px !important;
-        font-size: 20px !important;
+        width: 140px;
+        height: 55px;
+        font-size: 20px;
     }
 
     .github-btn {
-        width: 140px !important;
-        height: 55px !important;
-        font-size: 20px !important;
+        width: 140px;
+        height: 55px;
+        font-size: 20px;
     }
 
     .pollo-loco-description {
-        width: 90% !important;
+        width: 90%;
     }
 }
 
 @media (max-width: 400px) {
     .pollo-loco-screens {
-        width: 100vw !important;
+        width: 100vw;
+
         img {
-            width: 90vw !important;
-            height: 165px !important;
+            width: 90vw;
+            height: 165px;
         }
     }
 
     .pollo-loco-description {
-        width: 90vw !important;
+        width: 90vw;
     }
 
     .live-test-btn {
-        width: 125px !important;
-        height: 50px !important;
+        width: 125px;
+        height: 50px;
     }
 
     .github-btn {
-        width: 125px !important;
-        height: 50px !important;
+        width: 125px;
+        height: 50px;
     }
 }
 
-@media ( max-width: 300px) {
+@media (max-width: 300px) {
     .live-test-btn {
-        width: 115px !important;
-        height: 50px !important;
+        width: 115px;
+        height: 50px;
     }
 
     .github-btn {
-        width: 115px !important;
-        height: 50px !important;
+        width: 115px;
+        height: 50px;
     }
 }

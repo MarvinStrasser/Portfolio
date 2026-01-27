@@ -1,12 +1,16 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .portfolio-head-container {
     padding-top: 210px;
     color: white;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     position: relative;
     z-index: 3;
-    max-width: 1440px;
+    max-width: $max-content;
+    margin: 0 auto;
 
     h2 {
         margin: 0;
@@ -33,20 +37,41 @@
         margin-right: 36px;
         z-index: 1;
     }
-
-    .purple-line-right {
-        height: 5px;
-        width: 484px;
-        flex-shrink: 0;
-        background-color: #9747ff;
-        margin-left: 36px;
-        z-index: 1;
-    }
 }
 
 .portfolio-projects {
     display: flex;
     flex-direction: column;
-    gap: 90px; // Abstand zwischen Join und Pollo
+    gap: 90px;
     margin-top: 70px;
+}
+
+@media (max-width: 720px) {
+    .title-and-description {
+        padding-right: 16px;
+    }
+}
+
+@media (max-width: 565px) {
+    .portfolio-head-container {
+        .purple-line-left {
+            display: none;
+        }
+    }
+
+    .title-and-description {
+        padding-left: 16px;
+
+        h2 {
+            font-size: 70px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .title-and-description {
+        h2 {
+            font-size: 45px;
+        }
+    }
 }

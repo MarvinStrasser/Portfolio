@@ -1,11 +1,13 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
+
 .my-skills-container {
     display: flex;
     justify-content: space-between;
     color: white;
-    max-width: 1920px;
+    max-width: $max-content;
+    margin: 0 auto;
 
 
     .skills {
@@ -26,6 +28,26 @@
             &:hover {
                 animation: bounce 1.5s ease-in-out;
             }
+        }
+    }
+
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        30% {
+            transform: translateY(-10px);
+        }
+
+        60% {
+            transform: translateY(0);
+        }
+
+        80% {
+            transform: translateY(-5px);
         }
     }
 
@@ -112,18 +134,33 @@
     left: 0;
 }
 
-@media(max-width: 1090px) {
+@media(max-width: 1140px) {
     .my-skills-container {
         flex-direction: column-reverse;
         align-items: center;
+        padding: 16px;
 
+        .skills-description {
+            align-items: center;
+            margin-right: 0px;
+            width: unset;
+        }
+
+        .skills-description span {
+            text-align: center;
+        }
+
+        .skills {
+            width: 100%;
+            margin: 0;
+            align-items: flex-start;
+        }
+
+        .skills-row {
+            gap: 16px;
+        }
     }
 
-    .skills-description {
-        align-items: center;
-        margin-right: 0px;
-        width: unset;
-    }
 
     .purple-line {
         display: none;
@@ -164,21 +201,13 @@
         width: 90vw;
     }
 
-    .skills-description span {
-        text-align: center;
-    }
-
     .skills-row {
         gap: 80px;
         justify-content: center;
     }
 }
 
-@media (max-width: 580px) {
-    .skills-description h2 {
-        font-size: 65px;
-    }
-}
+
 
 @media (max-width: 490px) {
     .btn-container {
@@ -200,20 +229,19 @@
     }
 }
 
-@media (max-width: 400px) {
-    .skills-description {
-        h2 {
-            font-size: 49px;
-        }
-    }
-
+@media (max-width: 475px) {
     .my-skills-container {
-        width: 100vw;
-        margin-top: 0px;
-    }
 
-    .skills {
-        width: 100vw;
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px 24px;
+            justify-items: center;
+        }
+
+        .skills-row {
+            display: contents;
+        }
     }
 
     .green-shadow2 {
@@ -223,4 +251,15 @@
             width: 280px;
         }
     }
+}
+
+@media (max-width: 400px) {
+    .my-skills-container {
+        .skills-description {
+            h2 {
+                font-size: 45px;
+            }
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header-inner">
-    <a class="logo" href="#" routerLink="/">
+    <a class="logo" routerLink="/">
       <span>M</span><span style="color: #9747FF;">A</span><span>R</span><span>VI</span><span
         style="color: #70E61C;">N</span>
     </a>
@@ -13,16 +13,19 @@
 
     <div class="header-right" [class.is-open]="menuOpen">
       <nav class="nav">
-        <a class="nav-link" data-section="about" href="#about" (click)="closeMenu()">About me</a>
-        <a class="nav-link" data-section="skills" href="#skills" (click)="closeMenu()">Skills</a>
-        <a class="nav-link" data-section="portfolio" href="#portfolio" (click)="closeMenu()">Portfolio</a>
+        <a class="nav-link" data-section="about" href="#about" (click)="closeMenu()">{{ t('nav.about') }}</a>
+        <a class="nav-link" data-section="skills" href="#skills" (click)="closeMenu()">{{ t('nav.skills') }}</a>
+        <a class="nav-link" data-section="portfolio" href="#portfolio" (click)="closeMenu()">{{ t('nav.portfolio')
+          }}</a>
       </nav>
 
       <div class="lang">
-        <button class="lang-btn" [class.is-active]="activeLang === 'de'" (click)="setLang('de')"
-          type="button">DE</button>
-        <button class="lang-btn" [class.is-active]="activeLang === 'en'" (click)="setLang('en')"
-          type="button">EN</button>
+        <button class="lang-btn" [class.is-active]="activeLang === 'de'" (click)="setLang('de')" type="button">
+          {{ t('lang.de') }}
+        </button>
+        <button class="lang-btn" [class.is-active]="activeLang === 'en'" (click)="setLang('en')" type="button">
+          {{ t('lang.en') }}
+        </button>
       </div>
     </div>
   </div>

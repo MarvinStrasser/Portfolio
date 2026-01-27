@@ -1,6 +1,7 @@
 import { Component, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TranslationService, Lang } from '../../translation/translation.component';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,9 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent implements AfterViewInit, OnDestroy {
   private observer: IntersectionObserver | null = null;
 
-  constructor(private router: Router) { }
+  menuOpen = false;
+
+  constructor(private router: Router, public i18n: TranslationService) {}
 
   ngAfterViewInit(): void {
     // 1) Direkt einmal versuchen
@@ -21,7 +24,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe(() => {
-        // kurz warten bis das neue View im DOM ist
         setTimeout(() => this.initActiveSectionObserver(), 0);
       });
   }
@@ -32,7 +34,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   private initActiveSectionObserver(): void {
-    // vorherigen Observer clean entfernen
     this.observer?.disconnect();
 
     const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
@@ -58,14 +59,20 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     sections.forEach((s) => this.observer!.observe(s));
   }
 
-  activeLang: 'de' | 'en' = 'en';
-
-  setLang(lang: 'de' | 'en'): void {
-    this.activeLang = lang;
+  // === Language (via service + localStorage) ===
+  get activeLang(): Lang {
+    return this.i18n.lang;
   }
 
-  menuOpen = false;
+  setLang(lang: Lang): void {
+    this.i18n.setLang(lang);
+  }
 
+  t(key: string): string {
+    return this.i18n.t(key);
+  }
+
+  // === Burger ===
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
     document.body.classList.toggle('no-scroll', this.menuOpen);
