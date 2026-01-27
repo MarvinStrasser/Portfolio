@@ -1,4 +1,4 @@
-<div id="contact">
+<div class="contact">
     <div class="bg"></div>
     <div class="contact-box">
         <div class="contact-container">
@@ -39,6 +39,7 @@
 
                 <div class="send-container">
                     <button class="send-btn contact-btn" #sendbutton type="button" (click)="sendEmail()"
+                        [disabled]="!formValid || emailSent"
                         [ngClass]="{ sent: emailSent, 'd-none': addClassToButton }">
                         <span *ngIf="!emailSent">{{ t.t('contact.send') }}</span>
                     </button>

@@ -1,19 +1,19 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TranslationService } from '../../translation/translation.component';
 
 type FieldEl = HTMLInputElement | HTMLTextAreaElement;
+type InputType = 'name' | 'email' | 'message';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
-  [key: string]: any;
-
   @ViewChild('myForm') myForm!: ElementRef<HTMLFormElement>;
   @ViewChild('nameField') nameField!: ElementRef<HTMLInputElement>;
   @ViewChild('emailField') emailField!: ElementRef<HTMLInputElement>;
@@ -32,16 +32,30 @@ export class ContactComponent {
   showSpanMsg = false;
   addClassToButton = false;
 
-  target!: FieldEl;
+  privacyAccepted = false;
 
-  constructor(public t: TranslationService) { }
+  private target!: FieldEl;
 
+  constructor(public t: TranslationService) {}
 
   private isValidEmail(value: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
   }
 
-  async sendEmail(event?: Event) {
+  get formValid(): boolean {
+    const nameEl = this.nameField?.nativeElement;
+    const emailEl = this.emailField?.nativeElement;
+    const msgEl = this.messageField?.nativeElement;
+    if (!nameEl || !emailEl || !msgEl) return false;
+
+    return (
+      nameEl.value.trim().length > 0 &&
+      this.isValidEmail(emailEl.value) &&
+      msgEl.value.trim().length > 0
+    );
+  }
+
+  async sendEmail(event?: Event): Promise<void> {
     event?.preventDefault();
     event?.stopPropagation();
 
@@ -50,12 +64,17 @@ export class ContactComponent {
     const msgEl = this.messageField.nativeElement;
 
     if (!this.isFormValid(nameEl, emailEl, msgEl)) return;
+    if (!this.privacyAccepted) return;
 
     this.startSendUi();
     await this.tryPost(nameEl, emailEl, msgEl);
   }
 
-  private async tryPost(nameEl: HTMLInputElement, emailEl: HTMLInputElement, msgEl: HTMLTextAreaElement): Promise<void> {
+  private async tryPost(
+    nameEl: HTMLInputElement,
+    emailEl: HTMLInputElement,
+    msgEl: HTMLTextAreaElement
+  ): Promise<void> {
     try {
       await this.postMail(this.createFormData(nameEl, emailEl, msgEl));
       this.finishSendUi();
@@ -74,8 +93,11 @@ export class ContactComponent {
     this.setInvalidField(emailEl);
   }
 
-
-  private isFormValid(nameEl: HTMLInputElement, emailEl: HTMLInputElement, msgEl: HTMLTextAreaElement): boolean {
+  private isFormValid(
+    nameEl: HTMLInputElement,
+    emailEl: HTMLInputElement,
+    msgEl: HTMLTextAreaElement
+  ): boolean {
     if (!this.isNameValid(nameEl)) return false;
     if (!this.isEmailFieldValid(emailEl)) return false;
     if (!this.isMessageValid(msgEl)) return false;
@@ -126,10 +148,15 @@ export class ContactComponent {
       this.greenCheckMarkName = false;
       this.greenCheckMarkEmail = false;
       this.greenCheckMarkMessage = false;
+      this.privacyAccepted = false;
     }, 3000);
   }
 
-  private createFormData(nameEl: HTMLInputElement, emailEl: HTMLInputElement, msgEl: HTMLTextAreaElement): FormData {
+  private createFormData(
+    nameEl: HTMLInputElement,
+    emailEl: HTMLInputElement,
+    msgEl: HTMLTextAreaElement
+  ): FormData {
     const formData = new FormData();
     formData.append('name', nameEl.value);
     formData.append('email', emailEl.value);
@@ -140,25 +167,25 @@ export class ContactComponent {
   private async postMail(formData: FormData): Promise<void> {
     const res = await fetch('https://marvin-strasser.de/api/send_email.php', {
       method: 'POST',
-      body: formData
+      body: formData,
     });
 
     const data = await res.json().catch(() => ({ ok: false }));
     if (!res.ok || !data?.ok) throw new Error('Mail not sent');
   }
 
-  onBlur(event: Event) {
+  onBlur(event: Event): void {
     this.target = event.target as FieldEl;
     this.checkInputState();
   }
 
-  onInput(inputType: string) {
+  onInput(inputType: InputType): void {
     this.checkInputState();
     this.checkInputValue(inputType);
     this.greenCheckMarked(inputType);
   }
 
-  onFocus(event: Event, inputType: string) {
+  onFocus(event: Event, inputType: InputType): void {
     this.target = event.target as FieldEl;
     if (this.target.value.length !== 0) return;
 
@@ -166,58 +193,75 @@ export class ContactComponent {
     this.showRequiredTextOnFocus(inputType);
   }
 
-  checkInputState() {
-    const isEmail = (this.target as FieldEl)?.getAttribute('name') === 'email';
+  private checkInputState(): void {
+    const isEmail = this.target?.getAttribute('name') === 'email';
     const valid = isEmail ? this.isValidEmail(this.target.value) : this.target.value.length > 0;
 
     if (valid) this.changeInputFieldsGreen();
     else this.changeInputFieldsRed();
   }
 
-  checkInputValue(inputType: string) {
-    const valid = inputType === 'email' ? this.isValidEmail(this.target.value) : this.target.value.length > 0;
+  private checkInputValue(inputType: InputType): void {
+    const valid =
+      inputType === 'email'
+        ? this.isValidEmail(this.target.value)
+        : this.target.value.length > 0;
+
     if (valid) this.showRequiredMessage(inputType);
     else this.hideRequiredMessage(inputType);
   }
 
-  greenCheckMarked(inputType: string) {
-    const prop = 'greenCheckMark' + inputType.charAt(0).toUpperCase() + inputType.slice(1);
-    this[prop] = inputType === 'email' ? this.isValidEmail(this.target.value) : this.target.value.length > 0;
+  private greenCheckMarked(inputType: InputType): void {
+    const valid =
+      inputType === 'email'
+        ? this.isValidEmail(this.target.value)
+        : this.target.value.length > 0;
+
+    this.setGreenCheck(inputType, valid);
   }
 
-  private changeInputFieldsGreen() {
+  private setGreenCheck(inputType: InputType, value: boolean): void {
+    if (inputType === 'name') this.greenCheckMarkName = value;
+    if (inputType === 'email') this.greenCheckMarkEmail = value;
+    if (inputType === 'message') this.greenCheckMarkMessage = value;
+  }
+
+  private changeInputFieldsGreen(): void {
     this.target.classList.add('content-filled');
     this.target.classList.remove('empty-content');
     this.target.classList.remove('bg-warning');
   }
 
-  private changeInputFieldsRed() {
+  private changeInputFieldsRed(): void {
     this.target.classList.remove('content-filled');
     this.target.classList.add('empty-content');
     this.target.classList.add('bg-warning');
   }
 
-  private showRequiredMessage(inputType: string) {
-    const prop = 'requiredAlert' + inputType.charAt(0).toUpperCase() + inputType.slice(1);
-    this[prop] = false;
+  private setRequiredAlert(inputType: InputType, value: boolean): void {
+    if (inputType === 'name') this.requiredAlertName = value;
+    if (inputType === 'email') this.requiredAlertEmail = value;
+    if (inputType === 'message') this.requiredAlertMessage = value;
   }
 
-  private hideRequiredMessage(inputType: string) {
-    const prop = 'requiredAlert' + inputType.charAt(0).toUpperCase() + inputType.slice(1);
-    this[prop] = true;
+  private showRequiredMessage(inputType: InputType): void {
+    this.setRequiredAlert(inputType, false);
   }
 
-  private showRequiredTextOnFocus(inputType: string) {
-    const prop = 'requiredAlert' + inputType.charAt(0).toUpperCase() + inputType.slice(1);
-    this[prop] = true;
+  private hideRequiredMessage(inputType: InputType): void {
+    this.setRequiredAlert(inputType, true);
   }
 
-  scrollToSection() {
+  private showRequiredTextOnFocus(inputType: InputType): void {
+    this.setRequiredAlert(inputType, true);
+  }
+
+  scrollToSection(): void {
     const top = document.getElementById('landing-page');
     top?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  resetForm() {
+  private resetForm(): void {
     this.myForm.nativeElement.reset();
 
     this.emailSent = false;

@@ -15,7 +15,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   menuOpen = false;
 
-  constructor(private router: Router, public i18n: TranslationService) {}
+  constructor(private router: Router, public i18n: TranslationService) { }
 
   ngAfterViewInit(): void {
     this.initActiveSectionObserver();
@@ -81,6 +81,8 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   onNavClick(sectionId: string): void {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+
     this.setActiveLink(sectionId);
     this.closeMenu();
   }
