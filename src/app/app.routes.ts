@@ -13,13 +13,9 @@ import { PolloLocoComponent } from './projects/pollo-loco/pollo-loco.component';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
-  //einzelne seiten
   { path: 'imprint', component: ImprintComponent },
   { path: 'privacy', component: PrivacyComponent },
-
-  // Projekt-Detailseiten (zum Testen & für Portfolio-Buttons)
   { path: 'projects/join', component: JoinComponent },
   { path: 'projects/pollo-loco', component: PolloLocoComponent },
-
   { path: '**', redirectTo: '' },
 ];

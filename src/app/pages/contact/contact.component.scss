@@ -3,7 +3,7 @@
 
 .contact {
   position: relative;
-  overflow-x: clip; // verhindert horizontal scroll (DA)
+  overflow-x: clip;
 }
 
 .contact-box {
@@ -25,9 +25,9 @@
     content: '';
     position: absolute;
     width: 681px;
-    height: 1127px;
-    right: -120px;
-    bottom: -320px;
+    height: 500px;
+    right: -150px;
+    bottom: 0px;
     background: url('../../../assets/img/shadows/Purple\ shadow\ 2.png') no-repeat center / contain;
     opacity: 0.65;
   }
@@ -79,7 +79,6 @@
     align-items: flex-start;
     gap: 24px;
 
-
     .contact-me-line {
       position: absolute;
       left: -100px;
@@ -107,7 +106,7 @@
       font-size: 16px;
       font-weight: 400;
       margin: 0;
-      max-width: 520px; // hilft beim "Vorlagen-Look"
+      max-width: 520px;
       opacity: 0.9;
     }
 
@@ -119,12 +118,11 @@
     }
   }
 
-  /* ===== FORM COLUMN ===== */
   .contact-form {
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: stretch; // WICHTIG: bündig wie Vorlage
+    align-items: stretch;
     gap: 22px;
 
     .wrapper {
@@ -135,12 +133,19 @@
     textarea {
       width: 100%;
       box-sizing: border-box;
-      background-color: #141d2f;
-      border: 1px solid #4b47ff;
+      background-color: $color-bg-primary;
+      border: 1px solid $color-accent-purple;
       border-radius: 10px;
-      color: white;
+      color: $color-text-primary;
       outline: none;
+      cursor: pointer;
     }
+
+    input:hover:not(.empty-content):not(.content-filled),
+    textarea:hover:not(.empty-content):not(.content-filled) {
+      border-color: $color-accent-green;
+    }
+
 
     input {
       height: 50px;
@@ -155,24 +160,23 @@
 
     input.content-filled,
     textarea.content-filled {
-      border-color: #54ac15;
+      border-color: $color-accent-green;
     }
 
     input.empty-content,
     textarea.empty-content {
-      border-color: #e61c40;
+      border-color: $color-accent-red;
     }
 
     .bg-warning {
-      background: url('/assets/img/alert.png') no-repeat scroll 15px 15px;
-      background-position: calc(100% - 15px) 15px;
+      background: url('./../../../assets/img/alert.png') no-repeat scroll 15px 15px;
+      background-position: calc(100% - 15px) 11px;
     }
 
     .transparent {
       color: transparent;
     }
 
-    /* ===== PRIVACY ===== */
     .privacy {
       width: 100%;
       margin-top: 8px;
@@ -184,7 +188,7 @@
     .privacy-label {
       position: relative;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 12px;
       font-size: 14px;
       line-height: 1.4;
@@ -193,14 +197,12 @@
       cursor: pointer;
     }
 
-    /* echte Checkbox verstecken */
     .privacy-checkbox {
       position: absolute;
       opacity: 0;
       pointer-events: none;
     }
 
-    /* custom box */
     .privacy-custom {
       width: 18px;
       height: 18px;
@@ -216,7 +218,6 @@
       filter: brightness(1.2);
     }
 
-    /* grüner Haken */
     .privacy-checkbox:checked+.privacy-custom::after {
       content: '';
       position: absolute;
@@ -241,14 +242,13 @@
     .privacy-error {
       visibility: hidden;
       font-size: 14px;
-      color: #E61C40;
+      color: $color-accent-red;
     }
 
     .privacy-error.is-visible {
       visibility: visible;
     }
 
-    /* ===== SEND BTN ===== */
     .send-container {
       height: 75px;
       width: 100%;
@@ -268,8 +268,8 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      color: white;
-      background-color: #70e61c;
+      color: $color-text-primary;
+      background-color: $color-accent-green;
       border-radius: 10px;
       border: none;
       cursor: pointer;
@@ -277,7 +277,7 @@
       &:hover {
         width: 190px;
         height: 70px;
-        background-color: #4b47ff;
+        background-color: $color-accent-purple;
       }
 
       &:disabled {
@@ -295,7 +295,6 @@
   }
 }
 
-/* ===== INPUT WRAPPER (ALERTS + CHECKMARK) ===== */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -303,18 +302,17 @@
   position: relative;
 
   span {
-    color: #e61c40;
+    color: $color-accent-red;
     font-size: 18px;
   }
 
   img {
     position: absolute;
     right: 15px;
-    top: 15px;
+    top: 11px;
   }
 }
 
-/* ===== SENT MESSAGE ===== */
 .message-sent-container {
   display: flex;
   justify-content: center;
@@ -330,7 +328,6 @@
   }
 }
 
-/* ===== SCROLL UP BTN ===== */
 .scroll-up-button {
   background-color: #141d2f;
   position: relative;
@@ -383,7 +380,6 @@
   display: none;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 1090px) {
   .contact-box {
     height: max-content;
@@ -443,7 +439,7 @@
     font-size: 45px;
   }
 
-  .green-line{
+  .green-line {
     margin-left: calc(50% + 125px);
   }
 

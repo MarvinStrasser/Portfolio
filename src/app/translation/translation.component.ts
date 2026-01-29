@@ -32,7 +32,7 @@ export class TranslationService {
       'about.block1': `I am excited to take the next step in my career as a Junior Web Developer and become part of a motivated and collaborative team.
         My goal is to continuously grow my skills while contributing to meaningful projects and developing modern, user-friendly, and visually appealing applications.`,
       'about.block2': `If you think I could be a valuable addition to your team and projects, I would be happy to connect.
-      Lets discuss how we can work together to create effective and high-quality web solutions.
+      Let´s discuss how we can work together to create effective and high-quality web solutions.
       Feel free to get in touch at any time.`,
       'about.bulbAlt': 'Idea',
       'about.puzzleAlt': 'Puzzle',
@@ -186,7 +186,6 @@ export class TranslationService {
       'privacy.section3.responsible.name': 'Marvin Straßer',
       'privacy.section3.responsible.street': 'Innerlohenerstraße 11',
       'privacy.section3.responsible.city': '83324 Ruhpolding',
-      'privacy.section3.responsible.phone': 'Phone: [Phone number of the responsible body]',
       'privacy.section3.responsible.emailLabel': 'Email',
       'privacy.section3.responsible.definition':
         'The responsible body is the natural or legal person who alone or jointly with others decides on the purposes and means of processing personal data (e.g. names, email addresses, etc.).',
@@ -473,7 +472,6 @@ export class TranslationService {
       'privacy.section3.responsible.name': 'Marvin Straßer',
       'privacy.section3.responsible.street': 'Innerlohenerstraße 11',
       'privacy.section3.responsible.city': '83324 Ruhpolding',
-      'privacy.section3.responsible.phone': 'Telefon: [Telefonnummer der verantwortlichen Stelle]',
       'privacy.section3.responsible.emailLabel': 'E-Mail',
       'privacy.section3.responsible.definition':
         'Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.',

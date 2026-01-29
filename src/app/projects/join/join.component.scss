@@ -4,7 +4,7 @@
 .join-container {
     max-width: $max-content;
     display: flex;
-    color: white;
+    color: $color-text-primary;
     align-items: center;
     padding-top: 116px;
     justify-content: flex-start;
@@ -12,7 +12,6 @@
 
     .join-screens {
         width: 100%;
-        ;
         height: 339px;
         display: flex;
         align-items: center;
@@ -20,14 +19,12 @@
         padding: 25px;
         z-index: 4;
 
-
         img {
             max-width: 370px;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
         }
-
     }
 
     .join-description {
@@ -40,27 +37,25 @@
         margin-right: 100px;
         z-index: 5;
 
-
         .join-text {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 15px;
 
-
             h3 {
                 margin: 0;
                 font-size: 32px;
                 font-style: normal;
                 font-weight: 700;
-                color: #9747FF;
+                color: $color-accent-purple;
             }
 
             p {
                 font-size: 23px;
                 font-style: normal;
                 font-weight: 400;
-                color: #70E61C;
+                color: $color-accent-green;
             }
 
             span {
@@ -69,14 +64,13 @@
             }
         }
 
-
         .live-test-btn {
             margin-right: 135px;
             width: 165px;
             height: 60px;
-            background: #9747FF;
+            background: $color-accent-purple;
             border-radius: 15px;
-            color: white;
+            color: $color-text-primary;
             font-size: 23px;
             font-weight: 400;
             box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -84,14 +78,13 @@
             transition: 0.1s ease;
 
             &:hover {
-                background-color: #70E61C;
+                background-color: $color-accent-green;
             }
         }
 
         .github-btn {
-            background-color: #141D2F;
-            border-style: unset;
-            border: 1px solid #70E61C;
+            background-color: $color-bg-primary;
+            border: 1px solid $color-accent-green;
             width: 165px;
             height: 60px;
             border-radius: 15px;
@@ -103,13 +96,10 @@
             transition: 0.1s ease;
 
             &:hover {
-                background-color: #70E61C;
+                background-color: $color-accent-green;
             }
         }
     }
-
-
-
 }
 
 @media(max-width: 1090px) {
@@ -138,10 +128,7 @@
         .join-screens {
             padding: 20px 0;
         }
-
     }
-
-
 }
 
 @media(max-width: 700px) {
@@ -153,8 +140,6 @@
             padding: 0;
         }
     }
-
-
 
     .live-test-btn {
         margin-right: 50px;
@@ -171,7 +156,6 @@
                 align-items: center;
                 gap: 10px;
 
-
                 .live-test-btn {
                     margin: 0;
                 }
@@ -182,9 +166,6 @@
             }
         }
     }
-
-
-
 }
 
 @media (max-width: 490px) {

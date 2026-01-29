@@ -23,7 +23,7 @@ a {
   right: 0;
   bottom: 80px;
   height: var(--shape-h);
-  background-image: url('/assets/img/bg-shape.png');
+  background-image: url('./../../../assets/img/bg-shape.png');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -33,7 +33,7 @@ a {
 
 .about-me-container {
   width: 100%;
-  max-width: 1920px;
+  max-width: $max-content;
   margin: 0 auto;
   padding: 100px;
   box-sizing: border-box;
@@ -106,7 +106,7 @@ a {
   left: -30px;
   pointer-events: none;
   opacity: 0.5;
-  rotate:left 90 degree;
+  transform: rotate(189deg);
 }
 
 .green {
@@ -142,7 +142,6 @@ a {
   .about-me-container {
     flex-direction: column-reverse;
     align-items: center;
-    gap: 50px;
     padding: 120px 40px;
   }
 
@@ -158,16 +157,8 @@ a {
   }
 
   .bg-shape {
-    bottom: auto; // bottom abschalten
-    top: clamp(482px, 88vw, 970px); // <- hier sitzt sie stabiler (anpassen)
-  }
-}
-
-
-
-@media (max-width: 569px) {
-  .about-me-left-content h2 {
-    font-size: 65px;
+    bottom: auto;
+    top: clamp(482px, 88vw, 970px);
   }
 }
 

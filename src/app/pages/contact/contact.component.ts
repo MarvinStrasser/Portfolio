@@ -52,14 +52,10 @@ export class ContactComponent {
     );
   }
 
-  async sendEmail(event?: Event): Promise<void> {
-    event?.preventDefault();
-    event?.stopPropagation();
-
+  async sendEmail(): Promise<void> {
     const nameEl = this.nameField.nativeElement;
     const emailEl = this.emailField.nativeElement;
     const msgEl = this.messageField.nativeElement;
-
     if (!this.isFormValid(nameEl, emailEl, msgEl)) return;
     if (!this.privacyAccepted) {
       this.requiredAlertPrivacy = true;
@@ -91,7 +87,6 @@ export class ContactComponent {
     this.emailSent = false;
     this.showSpanMsg = false;
     this.addClassToButton = false;
-
     this.requiredAlertEmail = true;
     this.greenCheckMarkEmail = false;
     this.setInvalidField(emailEl);
@@ -175,7 +170,6 @@ export class ContactComponent {
       method: 'POST',
       body: formData,
     });
-
     const data = await res.json().catch(() => ({ ok: false }));
     if (!res.ok || !data?.ok) throw new Error('Mail not sent');
   }
@@ -194,7 +188,6 @@ export class ContactComponent {
   onFocus(event: Event, inputType: InputType): void {
     this.target = event.target as FieldEl;
     if (this.target.value.length !== 0) return;
-
     this.target.classList.remove('bg-warning');
     this.showRequiredTextOnFocus(inputType);
   }
@@ -202,7 +195,6 @@ export class ContactComponent {
   private checkInputState(): void {
     const isEmail = this.target?.getAttribute('name') === 'email';
     const valid = isEmail ? this.isValidEmail(this.target.value) : this.target.value.length > 0;
-
     if (valid) this.changeInputFieldsGreen();
     else this.changeInputFieldsRed();
   }
@@ -212,7 +204,6 @@ export class ContactComponent {
       inputType === 'email'
         ? this.isValidEmail(this.target.value)
         : this.target.value.length > 0;
-
     if (valid) this.showRequiredMessage(inputType);
     else this.hideRequiredMessage(inputType);
   }
@@ -222,7 +213,6 @@ export class ContactComponent {
       inputType === 'email'
         ? this.isValidEmail(this.target.value)
         : this.target.value.length > 0;
-
     this.setGreenCheck(inputType, valid);
   }
 
@@ -277,7 +267,6 @@ export class ContactComponent {
     this.privacyAccepted = false;
     this.privacyTouched = false;
     this.requiredAlertPrivacy = false;
-
     this.clearFieldClasses(this.nameField.nativeElement);
     this.clearFieldClasses(this.emailField.nativeElement);
     this.clearFieldClasses(this.messageField.nativeElement);

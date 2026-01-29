@@ -21,14 +21,12 @@
         margin-right: 25px;
         z-index: 4;
 
-
         img {
             max-width: 370px;
             height: 200px;
             object-fit: fill;
             border-radius: 10px;
         }
-
     }
 
     .pollo-loco-description {
@@ -40,7 +38,6 @@
         gap: 35px;
         margin-left: 100px;
         z-index: 5;
-
 
         .pollo-loco-text {
             display: flex;
@@ -54,14 +51,14 @@
                 font-size: 32px;
                 font-style: normal;
                 font-weight: 700;
-                color: #9747FF;
+                color: $color-accent-purple;
             }
 
             p {
                 font-size: 23px;
                 font-style: normal;
                 font-weight: 400;
-                color: #70E61C;
+                color: $color-accent-green;
             }
 
             span {
@@ -75,7 +72,7 @@
             margin-right: 135px;
             width: 165px;
             height: 60px;
-            background: #9747FF;
+            background: $color-accent-purple;
             border-radius: 15px;
             color: white;
             font-size: 23px;
@@ -85,14 +82,13 @@
             transition: 0.1s ease;
 
             &:hover {
-                background-color: #70E61C;
+                background-color: $color-accent-green;
             }
         }
 
         .github-btn {
-            background-color: #141D2F;
-            border-style: unset;
-            border: 1px solid #70E61C;
+            background-color: $color-bg-primary;
+            border: 1px solid $color-accent-green;
             width: 165px;
             height: 60px;
             border-radius: 15px;
@@ -104,7 +100,7 @@
             transition: 0.1s ease;
 
             &:hover {
-                background-color: #70E61C;
+                background-color: $color-accent-green;
             }
         }
     }
@@ -165,7 +161,6 @@
         }
     }
 
-
     .live-test-btn {
         margin-right: 50px;
     }
@@ -181,7 +176,6 @@
                 width: 100%;
                 align-items: center;
                 gap: 10px;
-
 
                 .live-test-btn {
                     margin: 0;
