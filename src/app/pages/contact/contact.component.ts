@@ -1,15 +1,16 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslationService } from '../../translation/translation.component';
 
 type FieldEl = HTMLInputElement | HTMLTextAreaElement;
-type InputType = 'name' | 'email' | 'message';
+type InputType = 'name' | 'email' | 'message' | 'privacy';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })
@@ -19,25 +20,20 @@ export class ContactComponent {
   @ViewChild('emailField') emailField!: ElementRef<HTMLInputElement>;
   @ViewChild('messageField') messageField!: ElementRef<HTMLTextAreaElement>;
   @ViewChild('sendbutton') sendbutton!: ElementRef<HTMLButtonElement>;
-
   requiredAlertName = false;
   requiredAlertEmail = false;
   requiredAlertMessage = false;
-
   greenCheckMarkName = false;
   greenCheckMarkEmail = false;
   greenCheckMarkMessage = false;
-
   emailSent = false;
   showSpanMsg = false;
   addClassToButton = false;
-
   privacyAccepted = false;
-
+  privacyTouched = false;
+  requiredAlertPrivacy = false;
   private target!: FieldEl;
-
-  constructor(public t: TranslationService) {}
-
+  constructor(public t: TranslationService) { }
   private isValidEmail(value: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
   }
@@ -51,7 +47,8 @@ export class ContactComponent {
     return (
       nameEl.value.trim().length > 0 &&
       this.isValidEmail(emailEl.value) &&
-      msgEl.value.trim().length > 0
+      msgEl.value.trim().length > 0 &&
+      this.privacyAccepted
     );
   }
 
@@ -64,10 +61,17 @@ export class ContactComponent {
     const msgEl = this.messageField.nativeElement;
 
     if (!this.isFormValid(nameEl, emailEl, msgEl)) return;
-    if (!this.privacyAccepted) return;
-
+    if (!this.privacyAccepted) {
+      this.requiredAlertPrivacy = true;
+      return;
+    }
     this.startSendUi();
     await this.tryPost(nameEl, emailEl, msgEl);
+  }
+
+  onPrivacyChange(): void {
+    this.privacyTouched = true;
+    this.requiredAlertPrivacy = !this.privacyAccepted;
   }
 
   private async tryPost(
@@ -149,6 +153,8 @@ export class ContactComponent {
       this.greenCheckMarkEmail = false;
       this.greenCheckMarkMessage = false;
       this.privacyAccepted = false;
+      this.privacyTouched = false;
+      this.requiredAlertPrivacy = false;
     }, 3000);
   }
 
@@ -242,6 +248,7 @@ export class ContactComponent {
     if (inputType === 'name') this.requiredAlertName = value;
     if (inputType === 'email') this.requiredAlertEmail = value;
     if (inputType === 'message') this.requiredAlertMessage = value;
+    if (inputType === 'privacy') this.requiredAlertPrivacy = value;
   }
 
   private showRequiredMessage(inputType: InputType): void {
@@ -267,6 +274,9 @@ export class ContactComponent {
     this.emailSent = false;
     this.showSpanMsg = false;
     this.addClassToButton = false;
+    this.privacyAccepted = false;
+    this.privacyTouched = false;
+    this.requiredAlertPrivacy = false;
 
     this.clearFieldClasses(this.nameField.nativeElement);
     this.clearFieldClasses(this.emailField.nativeElement);

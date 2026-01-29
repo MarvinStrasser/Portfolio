@@ -1,78 +1,80 @@
 <div id="skills">
     <div class="my-skills-container">
-        <div class="skills">
-            <div class="skills-row">
-                <div class="skill-name">
-                    <img src="assets/img/icons/html.png" alt="">
-                    <span>HTML</span>
+        <div class="mobile">
+            <div class="skills">
+                <div class="skills-row">
+                    <div class="skill-name">
+                        <img src="assets/img/icons/html.png" alt="">
+                        <span>HTML</span>
+                    </div>
+                    <div class="skill-name">
+                        <img src="assets/img/icons/CSS.png" alt="">
+                        <span>CSS</span>
+                    </div>
+                    <div class="skill-name">
+                        <img src="assets/img/icons/Javascript.png" alt="">
+                        <span>Javascript</span>
+                    </div>
+                    <div class="skill-name">
+                        <img src="assets/img/icons/Api.png" alt="">
+                        <span>Rest-Api</span>
+                    </div>
                 </div>
-                <div class="skill-name">
-                    <img src="assets/img/icons/CSS.png" alt="">
-                    <span>CSS</span>
+
+                <div class="skills-row">
+                    <div class="skill-name">
+                        <img src="assets/img/icons/Typescript.png" alt="">
+                        <span>Typescript</span>
+                    </div>
+                    <div class="skill-name">
+                        <img src="assets/img/icons/Angular.png" alt="">
+                        <span>Angular</span>
+                    </div>
+                    <div class="skill-name">
+                        <img src="assets/img/icons/Firebase.png" alt="">
+                        <span>Firebase</span>
+                    </div>
                 </div>
-                <div class="skill-name">
-                    <img src="assets/img/icons/Javascript.png" alt="">
-                    <span>Javascript</span>
+
+                <div class="skills-row">
+                    <div class="skill-name">
+                        <img src="assets/img/icons/git.png" alt="">
+                        <span>Github</span>
+                    </div>
+                    <div class="skill-name">
+                        <img src="assets/img/icons/Scrum.png" alt="">
+                        <span>Scrum</span>
+                    </div>
                 </div>
-                <div class="skill-name">
-                    <img src="assets/img/icons/Api.png" alt="">
-                    <span>Rest-Api</span>
+
+                <div class="skills-row">
+                    <div class="skill-name">
+                        <img src="assets/img/icons/Material-Design.png" alt="">
+                        <span>Material <br> Design</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="skills-row">
-                <div class="skill-name">
-                    <img src="assets/img/icons/Typescript.png" alt="">
-                    <span>Typescript</span>
-                </div>
-                <div class="skill-name">
-                    <img src="assets/img/icons/Angular.png" alt="">
-                    <span>Angular</span>
-                </div>
-                <div class="skill-name">
-                    <img src="assets/img/icons/Firebase.png" alt="">
-                    <span>Firebase</span>
-                </div>
-
-            </div>
-
-            <div class="skills-row">
-                <div class="skill-name">
-                    <img src="assets/img/icons/git.png" alt="">
-                    <span>Github</span>
-                </div>
-                <div class="skill-name">
-                    <img src="assets/img/icons/Scrum.png" alt="">
-                    <span>Scrum</span>
-                </div>
-            </div>
-
-            <div class="skills-row">
-                <div class="skill-name">
-                    <img src="assets/img/icons/Material-Design.png" alt="">
-                    <span>Material <br> Design</span>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-        <div class="skills-description">
-            <h2>{{ t.t('skills.title') }}</h2>
-            <span>{{ t.t('skills.text') }}</span>
-
-            <div class="btn-container">
+            <div class="btn-container btn-container-mobile">
                 <button class="btn-primary" (click)="scrollToSection()">
                     {{ t.t('skills.cta') }}
                 </button>
             </div>
         </div>
 
-        <span class="purple-line"></span>
+        <div class="skills-description">
+            <div class="skills-head">
+                <h2>{{ t.t('skills.title') }}</h2>
+                <span class="blue-line" aria-hidden="true"></span>
+            </div>
 
+            <span class="skills-text">{{ t.t('skills.text') }}</span>
 
+            <div class="btn-container btn-container-desktop">
+                <button class="btn-primary" (click)="scrollToSection()">
+                    {{ t.t('skills.cta') }}
+                </button>
+            </div>
+        </div>
     </div>
-
 </div>

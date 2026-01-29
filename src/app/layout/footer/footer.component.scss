@@ -1,3 +1,6 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .footer-container {
     position: relative;
     margin-top: 0px;
@@ -10,10 +13,13 @@
     z-index: 6;
     background-color: #141D2F;
     box-sizing: border-box;
-    width: 1440px;
+    max-width: $max-content;
+    width: 100%;
 
 
     .footer-left {
+        flex-direction: column;
+
         span {
             cursor: pointer;
             font-size: 32px;
@@ -22,9 +28,29 @@
         }
 
         a {
+            position: relative;
+            display: inline-block;
             text-decoration: none;
             color: white;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -6px;
+                width: 50%;
+                height: 2px;
+                background-color: $color-accent-light-blue;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 200ms ease;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+            }
         }
+
     }
 
     .footer-middle {
@@ -77,37 +103,31 @@
 
 @media(max-width: 830px) {
     .footer-container {
-        padding-top: 50px;
         flex-direction: column;
         justify-content: unset;
         gap: 30px;
         margin-bottom: 30px;
+        padding-top: 20px;
     }
 
-    .footer-left{
+    .footer-left {
         display: flex;
         flex-direction: column;
         align-items: center;
+        order: 1;
+    }
+
+    .footer-middle {
+        order: 3;
+    }
+
+    .footer-right{
+        order: 2;
     }
 }
 
-@media(max-width: 768px) {
-    .footer-container {
-        padding-top: 100px;
-        padding-bottom: 200px;
-    }
-}
 
 @media(max-width: 700px) {
-
-    .footer-left{
-        gap: 20px;
-    }
-
-    .footer-left a {
-        font-size: 24px;
-    }
-
     .footer-middle span {
         font-size: 30px;
     }
@@ -119,25 +139,16 @@
     }
 }
 
-@media (max-width: 540px) {
-    .footer-container {
-        padding-bottom: 20px;
-    }
-}
-
 @media (max-width: 490px) {
-    .footer-container {
-        margin-top: unset;
-        padding: unset;
-        padding-top: 20px;
+    .footer-container{
+        padding: 20px 16px;
     }
-
     .footer-middle span {
         font-size: 20px;
     }
 
     .footer-right {
         gap: 30px;
-        justify-content: center ;
+        justify-content: center;
     }
 }

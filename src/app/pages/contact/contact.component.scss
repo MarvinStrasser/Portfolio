@@ -34,28 +34,33 @@
 }
 
 .contact-container {
-  color: white;
-  padding-top: 100px;
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding-left: 100px;
-  padding-right: 100px;
+  gap: 28px;
+  padding-bottom: 85px;
+}
 
-  h1 {
-    font-size: 90px;
-    font-weight: 700;
-    margin: 0;
-  }
+.contact-container h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: white;
+  font-size: 90px;
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 2;
+}
 
-  .purple-line {
-    height: 5px;
-    width: 50px;
-    background-color: #4B47FF;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin-right: 50px;
-    flex: 0 0 auto;
-  }
+.green-line {
+  margin-left: calc(50% + 220px);
+  flex: 1;
+  height: 5px;
+  background-color: $color-accent-green;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .contact-me-container {
@@ -68,45 +73,59 @@
   gap: 60px;
 
   .contact-me {
+    position: relative;
     width: 50%;
     display: flex;
     align-items: flex-start;
     gap: 24px;
 
+
     .contact-me-line {
-      width: 5px;
-      height: 80px;
-      background-color: #4B47FF;
+      position: absolute;
+      left: -100px;
+      top: 20px;
+      width: 60px;
+      height: 5px;
       border-radius: 10px;
-      flex: 0 0 auto;
-      margin-top: 10px;
+      background-color: $color-accent-light-blue;
     }
 
     .contact-me-text {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     h2 {
       font-size: 32px;
-      font-style: normal;
       font-weight: 700;
-      margin-top: 0;
+      margin: 0;
     }
 
-    p,
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0;
+      max-width: 520px; // hilft beim "Vorlagen-Look"
+      opacity: 0.9;
+    }
+
     span {
       font-size: 16px;
-      font-style: normal;
       font-weight: 400;
+      margin: 0;
+      opacity: 0.95;
     }
   }
 
+  /* ===== FORM COLUMN ===== */
   .contact-form {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; // WICHTIG: bündig wie Vorlage
+    gap: 22px;
 
     .wrapper {
       width: 100%;
@@ -116,8 +135,8 @@
     textarea {
       width: 100%;
       box-sizing: border-box;
-      background-color: #141D2F;
-      border: 1px solid #4B47FF;
+      background-color: #141d2f;
+      border: 1px solid #4b47ff;
       border-radius: 10px;
       color: white;
       outline: none;
@@ -136,12 +155,12 @@
 
     input.content-filled,
     textarea.content-filled {
-      border-color: #54AC15;
+      border-color: #54ac15;
     }
 
     input.empty-content,
     textarea.empty-content {
-      border-color: #E61C40;
+      border-color: #e61c40;
     }
 
     .bg-warning {
@@ -153,28 +172,61 @@
       color: transparent;
     }
 
+    /* ===== PRIVACY ===== */
     .privacy {
       width: 100%;
       margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .privacy-label {
+      position: relative;
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
       font-size: 14px;
       line-height: 1.4;
       color: $color-text-primary;
       opacity: 0.9;
+      cursor: pointer;
     }
 
+    /* echte Checkbox verstecken */
     .privacy-checkbox {
-      margin-top: 3px;
-      width: 16px;
-      height: 16px;
-      accent-color: $color-accent-green;
-      cursor: pointer;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* custom box */
+    .privacy-custom {
+      width: 18px;
+      height: 18px;
+      border: 2px solid $color-accent-green;
+      border-radius: 4px;
+      background: $color-bg-primary;
       flex: 0 0 auto;
+      margin-top: 2px;
+      position: relative;
+    }
+
+    .privacy-label:hover .privacy-custom {
+      filter: brightness(1.2);
+    }
+
+    /* grüner Haken */
+    .privacy-checkbox:checked+.privacy-custom::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 1px;
+      width: 5px;
+      height: 10px;
+      border: solid $color-accent-green;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
     }
 
     .privacy-link {
@@ -186,6 +238,17 @@
       }
     }
 
+    .privacy-error {
+      visibility: hidden;
+      font-size: 14px;
+      color: #E61C40;
+    }
+
+    .privacy-error.is-visible {
+      visibility: visible;
+    }
+
+    /* ===== SEND BTN ===== */
     .send-container {
       height: 75px;
       width: 100%;
@@ -206,7 +269,7 @@
       justify-content: center;
       align-items: center;
       color: white;
-      background-color: #70E61C;
+      background-color: #70e61c;
       border-radius: 10px;
       border: none;
       cursor: pointer;
@@ -214,7 +277,7 @@
       &:hover {
         width: 190px;
         height: 70px;
-        background-color: #4B47FF;
+        background-color: #4b47ff;
       }
 
       &:disabled {
@@ -232,6 +295,7 @@
   }
 }
 
+/* ===== INPUT WRAPPER (ALERTS + CHECKMARK) ===== */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -239,7 +303,7 @@
   position: relative;
 
   span {
-    color: #E61C40;
+    color: #e61c40;
     font-size: 18px;
   }
 
@@ -250,6 +314,7 @@
   }
 }
 
+/* ===== SENT MESSAGE ===== */
 .message-sent-container {
   display: flex;
   justify-content: center;
@@ -265,8 +330,9 @@
   }
 }
 
+/* ===== SCROLL UP BTN ===== */
 .scroll-up-button {
-  background-color: #141D2F;
+  background-color: #141d2f;
   position: relative;
   bottom: 75px;
   right: 100px;
@@ -317,6 +383,7 @@
   display: none;
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1090px) {
   .contact-box {
     height: max-content;
@@ -324,22 +391,9 @@
     padding-top: 120px;
   }
 
-  .contact-container {
-    flex-direction: column-reverse;
-    padding-top: 0px;
-    padding-bottom: 25px;
-    padding-left: 0px;
-    padding-right: 0px;
-
-    h1 {
-      margin: 0;
-    }
-
-    .purple-line {
-      box-sizing: border-box;
-      margin-right: 0;
-      width: 40%;
-    }
+  .left-content {
+    width: 100%;
+    padding: 0 16px;
   }
 
   .contact-me-container {
@@ -354,8 +408,16 @@
       padding-bottom: 10px;
       text-align: left;
 
+      p {
+        display: none;
+      }
+
       .contact-me-line {
-        height: 70px;
+        left: -68px;
+      }
+
+      .contact-me-text {
+        gap: 12px;
       }
     }
 
@@ -378,7 +440,11 @@
 
 @media (max-width: 580px) {
   .contact-container h1 {
-    font-size: 65px;
+    font-size: 45px;
+  }
+
+  .green-line{
+    margin-left: calc(50% + 125px);
   }
 
   .message-sent-container {

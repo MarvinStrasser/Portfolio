@@ -1,14 +1,12 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-
 .my-skills-container {
     display: flex;
     justify-content: space-between;
     color: white;
     max-width: $max-content;
     margin: 0 auto;
-
 
     .skills {
         margin-left: 100px;
@@ -54,7 +52,7 @@
     .skills-row {
         display: flex;
         align-items: center;
-        gap: 120px;
+        gap: 91px;
     }
 
     .skill-name {
@@ -71,55 +69,77 @@
         display: flex;
         flex-direction: column;
         width: 471px;
-        margin-right: 42px;
         gap: 34px;
         z-index: 5;
+        justify-content: center;
+        align-items: flex-start;
+
+        .skills-head {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
 
         h2 {
-            text-align: right;
+            position: absolute;
+            margin: 0;
             font-size: 90px;
             font-weight: 700;
-            margin: 0;
+            line-height: 1;
+            white-space: nowrap;
+            z-index: 2;
         }
 
-        span {
-            text-align: right;
+        .blue-line {
+            margin-left: calc(10% + 220px);
+            flex: 1;
+            height: 5px;
+            background-color: $color-accent-light-blue;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .skills-text {
             font-size: 16px;
             font-weight: 400;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            z-index: 6;
-            width: 180px;
-            height: 60px;
-            background-color: $color-accent-green;
-            color: $color-text-primary;
-            border-radius: 15px;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            transition: transform $transition-fast, background-color $transition-fast;
-
-            &:hover {
-                background-color: $color-accent-purple;
-                transform: translateY(-2px);
-            }
+            max-width: 520px;
+            padding-right: 16px;
         }
     }
 
+    span {
+        font-size: 16px;
+        font-weight: 400;
+        padding-right: 0;
+    }
 
+    .btn-container {
+        display: flex;
+        justify-content: center;
+    }
 
-    .purple-line {
-        width: 100px;
-        height: 5px;
-        background-color: #4B47FF;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
+    .btn-primary {
+        z-index: 6;
+        width: 180px;
+        height: 60px;
+        background-color: $color-accent-green;
+        color: $color-text-primary;
+        border-radius: 15px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform $transition-fast, background-color $transition-fast;
+
+        &:hover {
+            background-color: $color-accent-purple;
+            transform: translateY(-2px);
+        }
+    }
+
+    .btn-container-mobile {
+        display: none;
     }
 }
 
@@ -134,20 +154,18 @@
     left: 0;
 }
 
-@media(max-width: 1140px) {
+@media (max-width: 1140px) {
     .my-skills-container {
         flex-direction: column-reverse;
         align-items: center;
-        padding: 16px;
+        padding: 50px 0px 16px 0px;
 
         .skills-description {
-            align-items: center;
+            align-items: flex-start;
             margin-right: 0px;
-            width: unset;
-        }
-
-        .skills-description span {
-            text-align: center;
+            width: 100%;
+            padding: 0 0 50px 100px;
+            box-sizing: border-box;
         }
 
         .skills {
@@ -156,102 +174,81 @@
             align-items: flex-start;
         }
 
+        .mobile{
+            width: 100%;
+            padding-left: 100px;
+            box-sizing: border-box;
+        }
+
         .skills-row {
-            gap: 16px;
+            padding: 0;
+            width: 100%;
         }
-    }
 
-
-    .purple-line {
-        display: none;
-    }
-
-    .btn-container {
-        box-sizing: border-box;
-        width: 100%;
-        height: 75px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 75px;
-
-        button {
-            margin-right: 0;
+        .btn-container-desktop {
+            display: none;
         }
-    }
 
-    .green-shadow2 {
-        top: 2800px;
-        left: 0;
+        .btn-container-mobile {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: 75px;
+        }
+
+        .skills-text {
+            padding: 0;
+        }
     }
 }
 
-
-@media (max-width: 700px) {
-    .skills {
-        width: 90vw;
-        height: max-content;
-        margin-right: unset;
-        margin-left: unset;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .skills-description {
-        width: 90vw;
-    }
-
-    .skills-row {
-        gap: 80px;
-        justify-content: center;
-    }
-}
-
-
-
-@media (max-width: 490px) {
-    .btn-container {
-        button {
-            width: 140px;
-            height: 55px;
-            font-size: 20px;
-        }
-    }
-
-    .skills {
-        gap: 100px;
-    }
-
-    .skills-row {
-        gap: 100px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 475px) {
+@media (max-width: 780px) {
     .my-skills-container {
+        padding: 50px 0 50px 16px;
+
+        .skills-description {
+            padding: 0 0 50px 0px;
+        }
+
+        .mobile{
+            padding-left: 0;
+        }
+        .skills-row {
+            padding: 0;
+            gap: 40px;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .my-skills-container {
+        .btn-container {
+            button {
+                width: 140px;
+                height: 55px;
+                font-size: 20px;
+            }
+        }
 
         .skills {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 40px 24px;
             justify-items: center;
+
+            img {
+                height: 45px;
+                width: 45px;
+            }
         }
 
         .skills-row {
             display: contents;
         }
     }
-
-    .green-shadow2 {
-        width: 280px;
-
-        img {
-            width: 280px;
-        }
-    }
 }
+
 
 @media (max-width: 400px) {
     .my-skills-container {
@@ -259,7 +256,10 @@
             h2 {
                 font-size: 45px;
             }
+
+            .blue-line {
+                margin-left: calc(10% + 120px);
+            }
         }
     }
-
 }

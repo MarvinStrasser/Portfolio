@@ -1,31 +1,43 @@
 <div class="contact">
     <div class="bg"></div>
+
     <div class="contact-box">
         <div class="contact-container">
-            <div class="purple-line"></div>
             <h1>{{ t.t('contact.title') }}</h1>
+            <div class="green-line"></div>
         </div>
 
         <div class="contact-me-container">
             <div class="contact-me">
-                <h2>{{ t.t('contact.headline') }}</h2>
-                <p>{{ t.t('contact.text') }}</p>
-                <span>{{ t.t('contact.ctaLine') }} <b>{{ t.t('contact.ctaBold') }}</b></span>
+                <div class="contact-me-line"></div>
+
+                <div class="contact-me-text">
+                    <h2>{{ t.t('contact.headline') }}</h2>
+                    <p>{{ t.t('contact.text') }}</p>
+                    <span>
+                        {{ t.t('contact.ctaLine') }}
+                        <b>{{ t.t('contact.ctaBold') }}</b>
+                    </span>
+                </div>
             </div>
 
             <form class="contact-form" #myForm novalidate>
                 <div class="wrapper">
                     <input required type="text" name="name" [placeholder]="t.t('contact.namePh')" #nameField
-                        (blur)="onBlur($event)" (focus)="onFocus($event, 'name')" (input)="onInput('name')">
-                    <span [class.transparent]="!requiredAlertName">{{ t.t('contact.nameReq') }}</span>
+                        (blur)="onBlur($event)" (focus)="onFocus($event, 'name')" (input)="onInput('name')" />
+                    <span [class.transparent]="!requiredAlertName">
+                        {{ t.t('contact.nameReq') }}
+                    </span>
                     <img *ngIf="greenCheckMarkName" src="assets/img/green-mark.png" />
                 </div>
 
                 <div class="wrapper">
                     <input type="email" name="email" [placeholder]="t.t('contact.emailPh')" #emailField required
                         pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" (blur)="onBlur($event)"
-                        (focus)="onFocus($event, 'email')" (input)="onInput('email')">
-                    <span [class.transparent]="!requiredAlertEmail">{{ t.t('contact.emailReq') }}</span>
+                        (focus)="onFocus($event, 'email')" (input)="onInput('email')" />
+                    <span [class.transparent]="!requiredAlertEmail">
+                        {{ t.t('contact.emailReq') }}
+                    </span>
                     <img *ngIf="greenCheckMarkEmail" src="assets/img/green-mark.png" />
                 </div>
 
@@ -33,8 +45,32 @@
                     <textarea type="text" name="message" [placeholder]="t.t('contact.msgPh')" #messageField required
                         (blur)="onBlur($event)" (focus)="onFocus($event, 'message')"
                         (input)="onInput('message')"></textarea>
-                    <span [class.transparent]="!requiredAlertMessage">{{ t.t('contact.msgReq') }}</span>
+                    <span [class.transparent]="!requiredAlertMessage">
+                        {{ t.t('contact.msgReq') }}
+                    </span>
                     <img *ngIf="greenCheckMarkMessage" src="assets/img/green-mark.png" />
+                </div>
+
+                <!-- PRIVACY -->
+                <div class="privacy">
+                    <label class="privacy-label">
+                        <input class="privacy-checkbox" type="checkbox" name="privacy" [(ngModel)]="privacyAccepted"
+                            (change)="onPrivacyChange()" />
+
+                        <span class="privacy-custom"></span>
+
+                        <span>
+                            {{ t.t('contact.privacyLeft') }}
+                            <a class="privacy-link" routerLink="/privacy">
+                                {{ t.t('contact.privacyLink') }}
+                            </a>
+                            {{ t.t('contact.privacyRight') }}
+                        </span>
+                    </label>
+
+                    <span class="privacy-error" [class.is-visible]="privacyTouched && !privacyAccepted">
+                        {{ t.t('contact.privacyReq') }}
+                    </span>
                 </div>
 
                 <div class="send-container">
@@ -55,11 +91,10 @@
 
         <div class="scroll-up-button">
             <img (click)="scrollToSection()" src="assets/img/Go-up-button-white.png" [alt]="t.t('contact.scrollUpAlt')"
-                class="none-hovered">
+                class="none-hovered" />
 
             <img (click)="scrollToSection()" src="assets/img/Go-up-button-green.png" [alt]="t.t('contact.scrollUpAlt')"
-                class="hovered">
+                class="hovered" />
         </div>
     </div>
-
 </div>
