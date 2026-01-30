@@ -13,10 +13,14 @@
 
     <div class="header-right" [class.is-open]="menuOpen">
       <nav class="nav">
-        <a class="nav-link" data-section="about-me" href="#about" (click)="closeMenu()">{{ t('nav.about') }}</a>
-        <a class="nav-link" data-section="skills" href="#skills" (click)="closeMenu()">{{ t('nav.skills') }}</a>
-        <a class="nav-link" data-section="portfolio" href="#portfolio" (click)="closeMenu()">{{ t('nav.portfolio')
-          }}</a>
+        <a class="nav-link" data-section="about-me" [routerLink]="['/']" fragment="about" (click)="closeMenu()">{{
+          t('nav.about') }}</a>
+
+        <a class="nav-link" data-section="skills" [routerLink]="['/']" fragment="skills" (click)="closeMenu()">{{
+          t('nav.skills') }}</a>
+
+        <a class="nav-link" data-section="portfolio" [routerLink]="['/']" fragment="portfolio" (click)="closeMenu()">{{
+          t('nav.portfolio') }}</a>
       </nav>
 
       <div class="lang">

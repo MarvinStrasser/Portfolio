@@ -21,7 +21,7 @@
   --container: #{$container-width};
   --gutter: 24px;
   --header-h: #{$header-height};
-  --shape-h: clamp(340px, 26vw, 475px);
+  --shape-h: clamp(340px, 30vw, 500px);
   --shape-overlap: clamp(120px, 14vw, 220px);
 }
 
@@ -30,6 +30,10 @@ html {
 }
 
 section[id] {
+  scroll-margin-top: calc(var(--header-h) + 20px);
+}
+
+#skills {
   scroll-margin-top: 120px;
 }
 

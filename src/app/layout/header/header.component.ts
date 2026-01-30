@@ -14,7 +14,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   private observer: IntersectionObserver | null = null;
   private destroy$ = new Subject<void>();
   menuOpen = false;
-  constructor(private router: Router, public i18n: TranslationService) {}
+  constructor(private router: Router, public i18n: TranslationService) { }
   ngAfterViewInit(): void {
     this.initActiveSectionObserver();
     this.router.events
