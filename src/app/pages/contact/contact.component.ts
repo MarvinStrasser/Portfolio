@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslationService } from '../../translation/translation.component';
+import { RevealHeadlineDirective } from '../../shared/directives/reveal-headline.directive';
 
 type FieldEl = HTMLInputElement | HTMLTextAreaElement;
 type InputType = 'name' | 'email' | 'message' | 'privacy';
@@ -10,7 +11,7 @@ type InputType = 'name' | 'email' | 'message' | 'privacy';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, RevealHeadlineDirective],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })

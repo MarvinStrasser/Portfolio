@@ -1,6 +1,5 @@
 <section id="landing-page" class="landing-page">
-  <div class="bg">
-  </div>
+  <div class="bg"></div>
 
   <div class="wrapper">
     <div class="title">
@@ -9,8 +8,11 @@
       </div>
 
       <div class="main-title">
-        <h1 class="name">Marvin Straßer</h1>
-        <p class="subtitle">{{ t('hero.subtitle') }}</p>
+        <h1 revealHeadline class="reveal-h1--left name">Marvin Straßer</h1>
+
+        <p revealHeadline class="reveal-h1--right subtitle">
+          {{ t('hero.subtitle') }}
+        </p>
 
         <div class="talk-btn">
           <button type="button" class="btn btn-primary" (click)="scrollToContact()">
@@ -19,11 +21,11 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="scroll-down">
-    <span>{{ t('hero.scrolldown') }}</span>
-    <img src="assets/img/down-arrow.png" [attr.alt]="t('hero.scrolldown')">
+    <div class="scroll-down">
+      <span>{{ t('hero.scrolldown') }}</span>
+      <img src="assets/img/down-arrow.png" [attr.alt]="t('hero.scrolldown')">
+    </div>
   </div>
 </section>
 

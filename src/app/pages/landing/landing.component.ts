@@ -4,16 +4,12 @@ import { SkillsComponent } from '../skills/skills.component';
 import { PortfolioComponent } from '../portfolio/portfolio.component';
 import { ContactComponent } from '../contact/contact.component';
 import { TranslationService } from '../../translation/translation.component';
+import { RevealHeadlineDirective } from '../../shared/directives/reveal-headline.directive';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [
-    AboutComponent,
-    SkillsComponent,
-    PortfolioComponent,
-    ContactComponent,
-  ],
+  imports: [AboutComponent, SkillsComponent, PortfolioComponent, ContactComponent, RevealHeadlineDirective],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
